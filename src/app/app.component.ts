@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-eduweb-app';
+
+  person = {
+    name: 'Testowy',
+    birthdate: 1997,
+    company: {
+      name: 'Eduweb'
+    }
+  };
+
+  get getAge(): number {
+    const currentYear: string = moment().format('Y');
+    return Number(currentYear) - this.person.birthdate;
+  }
 }
