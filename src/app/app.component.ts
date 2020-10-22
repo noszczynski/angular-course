@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +7,18 @@ import * as moment from 'moment';
 })
 export class AppComponent {
   title = 'angular-eduweb-app';
+  counter = 0;
 
-  person = {
-    name: 'Testowy',
-    birthdate: 1997,
-    company: {
-      name: 'Eduweb'
-    }
-  };
-
-  get getAge(): number {
-    const currentYear: string = moment().format('Y');
-    return Number(currentYear) - this.person.birthdate;
+  timer = (): void  => {
+    this.counter += 1;
   }
+
+  startInterval = (): void => {
+    setInterval(this.timer, 500);
+  }
+
+  constructor() {
+    this.startInterval();
+  }
+
 }

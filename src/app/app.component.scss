@@ -1,0 +1,22 @@
+/* Global style */
+
+::ng-deep {
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+/* Global style */
+
+.content {
+  background: bisque;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
