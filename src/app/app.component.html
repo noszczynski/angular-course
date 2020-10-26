@@ -1,35 +1,78 @@
 <main class="content" role="main">
-  <div class="container">
-    <h1>App</h1>
+  <div class="container" [attr.id]="title + '-container'">
 
-    <div class="card">
+    <div class="row">
+      <div class="col-12">
+        <h1>My playlists</h1>
+      </div>
+    </div>
 
-      <div class="card-body">
-        <h5 class="card-title">Playlist</h5>
-        <p class="card-text">Playlist description</p>
+    <div class="row">
+
+      <div class="col-md-6">
+        <table class="table-dark">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Tracks</th>
+              <th scope="col">Favourite</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="card-body">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" [value]="playlist.name"/>
-        </div>
-        <div class="form-group">
-          <label for="number_of_songs">Tracks</label>
-          <input type="number" class="form-control" id="number_of_songs" [value]="playlist.tracks"/>
-        </div>
-        <div class="form-group">
-          <label for="color">Color</label>
-          <input type="color" class="form-control" id="color" [value]="playlist.color"/>
-        </div>
-        <div class="form-group">
-          <label for="fav">
-            <input type="checkbox" class="form-control" id="fav" [checked]="playlist.favourite"/>
-            <span>Favourite</span>
-          </label>
+      <div class="col-md-6">
+        <div class="card">
+
+          <div class="card-body">
+            <h5 class="card-title">Playlist</h5>
+            <p class="card-text">Playlist description</p>
+          </div>
+
+          <div class="card-body">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" [value]="playlist.name"/>
+            </div>
+            <div class="form-group">
+              <label for="number_of_songs">Tracks</label>
+              <input type="number" class="form-control" id="number_of_songs" [value]="playlist.tracks"/>
+            </div>
+            <div class="form-group">
+              <label for="color">Color</label>
+              <input type="color" class="form-control" id="color" [value]="playlist.color"/>
+            </div>
+            <div class="form-group">
+              <label for="fav">
+                <input type="checkbox" class="form-control" id="fav" [checked]="playlist.favourite"/>
+                <span>Favourite</span>
+              </label>
+            </div>
+          </div>
+
         </div>
       </div>
-
     </div>
 
   </div>
