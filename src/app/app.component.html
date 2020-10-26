@@ -1,9 +1,37 @@
 <main class="content" role="main">
   <div class="container">
     <h1>App</h1>
-    <h2>basic: {{ title }}</h2>
-    <h2 class="h2">with bootstrap: {{ title }}</h2>
-    <p>{{ counter }}</p>
+
+    <div class="card">
+
+      <div class="card-body">
+        <h5 class="card-title">Playlist</h5>
+        <p class="card-text">Playlist description</p>
+      </div>
+
+      <div class="card-body">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" [value]="playlist.name"/>
+        </div>
+        <div class="form-group">
+          <label for="number_of_songs">Tracks</label>
+          <input type="number" class="form-control" id="number_of_songs" [value]="playlist.tracks"/>
+        </div>
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input type="color" class="form-control" id="color" [value]="playlist.color"/>
+        </div>
+        <div class="form-group">
+          <label for="fav">
+            <input type="checkbox" class="form-control" id="fav" [checked]="playlist.favourite"/>
+            <span>Favourite</span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </main>
 

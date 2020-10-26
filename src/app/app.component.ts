@@ -7,18 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-eduweb-app';
-  counter = 0;
-
-  timer = (): void  => {
-    this.counter += 1;
-  }
-
-  startInterval = (): void => {
-    setInterval(this.timer, 500);
-  }
+  playlist = {
+    name: 'The best of Adam',
+    tracks: 23,
+    color: '#00FF00',
+    favourite: true
+  };
 
   constructor() {
-    this.startInterval();
   }
-
 }
