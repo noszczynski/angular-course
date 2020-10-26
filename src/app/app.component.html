@@ -16,11 +16,11 @@
             </thead>
             <tbody>
             <tr>
-              <th scope="row">1. </th>
-              <td class="font-weight-bold" [style.color]=" playlist.color "> {{ playlist.name }} </td>
+              <th scope="row">1.</th>
+              <td class="font-weight-bold" [style.color]="playlist.color"> {{ playlist.name }} </td>
               <td> {{ playlist.tracks }} </td>
               <td>
-                <div>
+                <div [class.list__item__favourite]="playlist.favourite">
                   <input
                     type="checkbox"
                     class="form-check-input position-static m-0 p-0"
