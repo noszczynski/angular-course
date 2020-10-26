@@ -13,18 +13,18 @@ import {Component, ViewEncapsulation} from '@angular/core';
 
       .content {
         background: #3a3a3a;
-        color: #ffffff;
+        color: #000000;
         height: 100%;
         min-height: 100vh;
-        width: 100vw;
+        width: 100%;
       }
     `
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None // styles above are global
 })
 
 export class AppComponent {
-  title = 'angular-eduweb-app';
+  title = 'angular-app';
   themeColor = '#138496';
 
   constructor() { }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Playlist } from '../interfaces';
 import { clone } from '../utils';
 
@@ -17,7 +17,7 @@ export class PlaylistsComponent implements OnInit {
   editedInitial: Playlist = {
     name: null,
     tracks: 0,
-    color: '#fff',
+    color: '#000000',
     favourite: false
   };
 
@@ -65,6 +65,11 @@ export class PlaylistsComponent implements OnInit {
 
   addNewPlaylist = (): void => {
     const obj = Object.assign({}, this.edited);
+
+    if (obj && !obj.name) {
+      return;
+    }
+
     const arr = clone(this.playlists);
     const id = Number(arr[arr.length - 1].id) + 1;
 

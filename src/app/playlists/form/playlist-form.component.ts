@@ -14,6 +14,10 @@ export class PlaylistFormComponent implements OnInit {
   @Output() savePlaylist: EventEmitter<any> = new EventEmitter();
   @Output() closeEdit: EventEmitter<any> = new EventEmitter();
 
+  handleAddNewPlaylist = () => this.addNewPlaylist.emit();
+  handleSavePlaylist = () => this.savePlaylist.emit();
+  handleCloseEdit = () => this.closeEdit.emit();
+
   getButtonColors = () => ({
     backgroundColor: this.themeColor,
     borderColor: this.themeColor
