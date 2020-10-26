@@ -20,7 +20,7 @@ export class AppComponent {
     favourite: false
   };
 
-  edited: Playlist = {...this.editedInitial};
+  edited: Playlist = clone(this.editedInitial);
 
   playlists: Playlist[] = [
     {
@@ -32,8 +32,19 @@ export class AppComponent {
     },
   ];
 
-  handleSavePlaylist = (e: MouseEvent) => {
-    console.log('Saved!');
+  savePlaylist = () => {
+    const item = clone(this.edited);
+    const arr = clone(this.playlists);
+
+    if (item) {
+      const { id } = item;
+      const index = arr.findIndex(playlist => playlist.id === id);
+
+      console.log(index);
+      arr[index] = Object.assign({}, item);
+
+      this.playlists = clone(arr);
+    }
   }
 
   setEditedPlaylist = (id: number): void => {
@@ -55,8 +66,13 @@ export class AppComponent {
     });
 
 
-    this.edited = {...this.editedInitial};
+    this.edited = clone(this.editedInitial);
     this.playlists = arr;
+  }
+
+  closeEdit = () => {
+    this.edited = clone(this.editedInitial);
+    this.selectedPlaylist = null;
   }
 
   getButtonColors = () => ({

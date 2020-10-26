@@ -44,7 +44,7 @@
         <div *ngIf="selectedPlaylist === null" class="card">
           <div class="card-body">
             <h4>New playlist</h4>
-            <p class="m-0">Create new playlist below</p>
+            <p class="m-0">Create new playlist</p>
           </div>
 
           <div class="card-body">
@@ -117,7 +117,7 @@
             <div class="form-group">
               <button
                 class="btn text-white float-left"
-                (click)="handleSavePlaylist($event)"
+                (click)="savePlaylist()"
                 [ngStyle]="getButtonColors()"
               >
                 Save
@@ -125,7 +125,7 @@
 
               <button
                 class="btn text-white float-right"
-                (click)="selectedPlaylist = null"
+                (click)="closeEdit()"
                 [ngStyle]="getButtonColors()"
               >
                 Close
