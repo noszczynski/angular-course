@@ -9,8 +9,8 @@
 
     <div class="row">
 
-      <div class="col-md-6">
-        <table class="table-dark">
+      <div class="col-lg-6 py-5">
+        <table class="table-dark w-100">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -21,10 +21,19 @@
           </thead>
           <tbody>
           <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
+            <th scope="row">1. </th>
+            <td> {{ playlist.name }} </td>
+            <td> {{ playlist.tracks }} </td>
+            <td>
+              <input
+                type="checkbox"
+                class="form-control"
+                id="favourite"
+                [checked]="playlist.favourite"
+                (change)="handleChange($event,'favourite')"
+              />
+              <label for="favourite" class="d-none"></label>
+            </td>
           </tr>
           <tr>
             <th scope="row"></th>
@@ -42,7 +51,7 @@
         </table>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <div class="card">
 
           <div class="card-body">
@@ -52,22 +61,50 @@
 
           <div class="card-body">
             <div class="form-group">
-              <label for="name">Name:</label>
-              <input type="text" class="form-control" id="name" [value]="playlist.name"/>
+              <label for="add_name">Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="add_name"
+                [value]="playlist.name"
+                (keyup)="handleChange($event, 'name')"
+              />
             </div>
             <div class="form-group">
-              <label for="number_of_songs">Tracks</label>
-              <input type="number" class="form-control" id="number_of_songs" [value]="playlist.tracks"/>
+              <label for="add_tracks">Tracks</label>
+              <input
+                type="number"
+                class="form-control"
+                id="add_tracks"
+                [value]="playlist.tracks"
+                (change)="handleChange($event,'tracks')"
+                (keyup)="handleChange($event,'tracks')"
+              />
             </div>
             <div class="form-group">
-              <label for="color">Color</label>
-              <input type="color" class="form-control" id="color" [value]="playlist.color"/>
+              <label for="add_color">Color</label>
+              <input
+                type="color"
+                class="form-control"
+                id="add_color"
+                [value]="playlist.color"
+                (change)="handleChange($event,'color')"
+              />
             </div>
             <div class="form-group">
-              <label for="fav">
-                <input type="checkbox" class="form-control" id="fav" [checked]="playlist.favourite"/>
+              <label for="add_favourite">
+                <input
+                  type="checkbox"
+                  class="form-control"
+                  id="add_favourite"
+                  [checked]="playlist.favourite"
+                  (change)="handleChange($event,'favourite')"
+                />
                 <span>Favourite</span>
               </label>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success float-right" (click)="handleSavePlaylist($event)">Save</button>
             </div>
           </div>
 

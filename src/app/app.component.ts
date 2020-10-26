@@ -14,6 +14,20 @@ export class AppComponent {
     favourite: true
   };
 
+  handleChange = (e, type) => {
+    if (e && e.target) {
+      const {value, checked} = e.target;
+
+      this.playlist[type] = type !== 'favourite' ? value : checked;
+
+      console.log(this.playlist);
+    }
+  }
+
+  handleSavePlaylist = (e) => {
+    console.log(e);
+  }
+
   constructor() {
   }
 }
