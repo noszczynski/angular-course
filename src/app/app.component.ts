@@ -27,7 +27,14 @@ export class AppComponent {
       id: 1,
       name: 'The best of Adam',
       tracks: 23,
-      color: this.themeColor,
+      color: '#c62347',
+      favourite: true
+    },
+    {
+      id: 2,
+      name: 'Summer 2020 Hits',
+      tracks: 15,
+      color: '#ddc216',
       favourite: true
     },
   ];

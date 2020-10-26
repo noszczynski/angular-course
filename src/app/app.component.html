@@ -14,21 +14,21 @@
             <h6 class="list__header__item">Favourite</h6>
           </div>
 
-          <div *ngFor="let item of playlists" class="list__row">
-            <span>1.</span>
-            <span class="list__item font-weight-bold" [ngStyle]="{color: item.color}">
-              <button class="list__item__button" (click)="setEditedPlaylist(item.id)">
-                {{ item.name }}
+          <div *ngFor="let playlist of playlists; let i = index" class="list__row">
+            <span> {{ i + 1 }} .</span>
+            <span class="list__item font-weight-bold" [ngStyle]="{color: playlist.color}">
+              <button class="list__item__button" (click)="setEditedPlaylist(playlist.id)">
+                {{ playlist.name }}
               </button>
             </span>
-            <span class="list__item"> {{ item.tracks }} </span>
+            <span class="list__item"> {{ playlist.tracks }} </span>
             <span class="list__item">
-              <span [ngClass]="{'list__item__favourite': item.favourite}">
+              <span [ngClass]="{'list__item__favourite': playlist.favourite}">
                 <input
                   type="checkbox"
                   class="form-check-input position-static m-0 p-0"
                   id="favourite"
-                  [(ngModel)]="item.favourite"
+                  [(ngModel)]="playlist.favourite"
                 />
                 <label for="favourite" class="d-none form-check-label"></label>
               </span>
