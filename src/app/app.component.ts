@@ -1,34 +1,30 @@
 import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'angular-eduweb-app';
-
   themeColor = '#138496';
+  selectedPlaylist = null;
 
   playlist = {
+    id: 1,
     name: 'The best of Adam',
     tracks: 23,
     color: this.themeColor,
     favourite: true
   };
 
-  handleChange = (e, type) => {
-    if (e && e.target) {
-      const {value, checked} = e.target;
-
-      this.playlist[type] = type !== 'favourite' ? value : checked;
-    }
+  handleSavePlaylist = e => {
+    console.log('Saved!');
   }
 
-  handleSavePlaylist = (e) => {
-    console.log(e);
+  setSelectedItem = id => {
+    this.selectedPlaylist = id;
   }
 
   getButtonColors = () => ({
