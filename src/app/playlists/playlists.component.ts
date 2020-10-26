@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Playlist } from '../interfaces';
 import { clone } from '../utils';
 
@@ -17,7 +17,7 @@ export class PlaylistsComponent implements OnInit {
   editedInitial: Playlist = {
     name: null,
     tracks: 0,
-    color: this.themeColor,
+    color: '#fff',
     favourite: false
   };
 
@@ -48,14 +48,14 @@ export class PlaylistsComponent implements OnInit {
       const { id } = item;
       const index = arr.findIndex(playlist => playlist.id === id);
 
-      console.log(index);
-      arr[index] = Object.assign({}, item);
-
-      this.playlists = clone(arr);
+      if (index !== -1) {
+        arr[index] = Object.assign({}, item);
+        this.playlists = clone(arr);
+      }
     }
   }
 
-  setEditedPlaylist = (id: number): void => {
+  setEditedPlaylist = (id): void => {
     const arr = clone(this.playlists);
     const obj = arr.find(item => item.id === id);
 
@@ -82,11 +82,6 @@ export class PlaylistsComponent implements OnInit {
     this.edited = clone(this.editedInitial);
     this.selectedPlaylist = null;
   }
-
-  getButtonColors = () => ({
-    backgroundColor: this.themeColor,
-    borderColor: this.themeColor
-  })
 
   constructor() { }
 
