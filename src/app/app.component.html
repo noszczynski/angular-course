@@ -4,23 +4,23 @@
     <div class="row p-3">
 
       <div class="col-lg-6">
-        <div class="content__table">
+        <div class="content__table list">
           <table class="w-100">
             <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Tracks</th>
-                <th scope="col">Favourite</th>
+              <tr class="list__row">
+                <th class="list__header" scope="col">#</th>
+                <th class="list__header" scope="col">Name</th>
+                <th class="list__header" scope="col">Tracks</th>
+                <th class="list__header" scope="col">Favourite</th>
               </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr class="list__row">
               <th scope="row">1.</th>
-              <td class="font-weight-bold" [style.color]="playlist.color"> {{ playlist.name }} </td>
-              <td> {{ playlist.tracks }} </td>
-              <td>
-                <div [class.list__item__favourite]="playlist.favourite">
+              <td class="list__item font-weight-bold" [style.color]="playlist.color"> {{ playlist.name }} </td>
+              <td class="list__item"> {{ playlist.tracks }} </td>
+              <td class="list__item">
+                <div [ngClass]="{'list__item__favourite': playlist.favourite}">
                   <input
                     type="checkbox"
                     class="form-check-input position-static m-0 p-0"
@@ -32,18 +32,6 @@
                 </div>
               </td>
             </tr>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
             </tbody>
           </table>
         </div>
@@ -54,7 +42,7 @@
 
           <div class="card-body">
             <h5 class="card-title">Playlist</h5>
-            <p class="card-text">Playlist description</p>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore officia quaerat sit.</p>
           </div>
 
           <div class="card-body">
