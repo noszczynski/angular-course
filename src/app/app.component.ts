@@ -10,7 +10,7 @@ export class AppComponent {
   playlist = {
     name: 'The best of Adam',
     tracks: 23,
-    color: '#00FF00',
+    color: '#138496',
     favourite: true
   };
 
