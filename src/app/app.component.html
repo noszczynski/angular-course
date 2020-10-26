@@ -7,7 +7,7 @@
         <div class="content__table list">
           <table class="w-100">
             <thead>
-              <tr class="list__row">
+              <tr class="list__row" [ngStyle]="{borderBottomColor: themeColor}">
                 <th class="list__header" scope="col">#</th>
                 <th class="list__header" scope="col">Name</th>
                 <th class="list__header" scope="col">Tracks</th>
@@ -17,7 +17,7 @@
             <tbody>
             <tr class="list__row">
               <th scope="row">1.</th>
-              <td class="list__item font-weight-bold" [style.color]="playlist.color"> {{ playlist.name }} </td>
+              <td class="list__item font-weight-bold" [ngStyle]="{color: playlist.color}"> {{ playlist.name }} </td>
               <td class="list__item"> {{ playlist.tracks }} </td>
               <td class="list__item">
                 <div [ngClass]="{'list__item__favourite': playlist.favourite}">
@@ -90,7 +90,13 @@
               </label>
             </div>
             <div class="form-group">
-              <button class="btn btn-info float-right" (click)="handleSavePlaylist($event)">Save</button>
+              <button
+                class="btn text-white float-right"
+                (click)="handleSavePlaylist($event)"
+                [ngStyle]="getButtonColors()"
+              >
+                Save
+              </button>
             </div>
           </div>
 

@@ -8,10 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-eduweb-app';
 
+  themeColor = '#138496';
+
   playlist = {
     name: 'The best of Adam',
     tracks: 23,
-    color: '#138496',
+    color: this.themeColor,
     favourite: true
   };
 
@@ -26,6 +28,11 @@ export class AppComponent {
   handleSavePlaylist = (e) => {
     console.log(e);
   }
+
+  getButtonColors = () => ({
+    backgroundColor: this.themeColor,
+    borderColor: this.themeColor
+  })
 
   constructor() {
   }
