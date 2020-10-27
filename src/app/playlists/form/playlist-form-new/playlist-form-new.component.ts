@@ -3,11 +3,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'app-playlist-form-new',
   template: `
-    <div class="card">
-      <div class="card-body">
-        <h4>New playlist</h4>
-        <p class="m-0">Create new playlist</p>
-      </div>
+    <app-card [title]=" 'TyTuł' " [description]=" 'DesCripTIon' ">
 
       <div class="card-body">
         <div class="form-group">
@@ -28,7 +24,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
           </button>
         </div>
       </div>
-    </div>
+
+    </app-card>
   `,
   styles: [
   ]

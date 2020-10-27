@@ -8,25 +8,11 @@
     <h6 class="list__header__item">Favourite</h6>
   </div>
 
-  <div *ngFor="let playlist of playlists; let i = index" class="list__row">
-    <span> {{ i + 1 }} .</span>
-    <span class="list__item font-weight-bold" [ngStyle]="{color: playlist.color}">
-      <button class="list__item__button" (click)="handleSetEditedPlaylist(playlist.id)">
-        {{ playlist.name }}
-      </button>
-    </span>
-    <span class="list__item"> {{ playlist.tracks }} </span>
-    <span class="list__item">
-      <span [ngClass]="{'list__item__favourite': playlist.favourite}">
-        <input
-          type="checkbox"
-          class="form-check-input position-static m-0 p-0"
-          id="favourite"
-          [(ngModel)]="playlist.favourite"
-        />
-        <label for="favourite" class="d-none form-check-label"></label>
-      </span>
-    </span>
-  </div>
+  <app-playlist-list-row
+    *ngFor="let playlist of playlists; let i = index"
+    [index]="i"
+    [playlist]="playlist"
+    (setEditedPlaylist)="handleSetEditedPlaylist($event)"
+  ></app-playlist-list-row>
 
 </div>

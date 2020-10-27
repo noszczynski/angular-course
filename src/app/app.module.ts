@@ -11,6 +11,9 @@ import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 import { PlaylistFormComponent } from './playlists/form/playlist-form.component';
 import { PlaylistFormNewComponent } from './playlists/form/playlist-form-new/playlist-form-new.component';
+import { CardContentComponent } from './card/card-content/card-content.component';
+import { CardComponent } from './card/card.component';
+import { PlaylistListRowComponent } from './playlists/playlist-list-row/playlist-list-row.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { PlaylistFormNewComponent } from './playlists/form/playlist-form-new/pla
     PlaylistFormComponent,
     ButtonComponent,
     InputComponent,
-    PlaylistFormNewComponent
+    PlaylistFormNewComponent,
+    CardContentComponent,
+    CardComponent,
+    PlaylistListRowComponent
   ],
     imports: [
         BrowserModule,
