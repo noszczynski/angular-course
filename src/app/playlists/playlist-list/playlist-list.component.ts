@@ -9,10 +9,10 @@ import {Playlist} from '../../interfaces';
 export class PlaylistListComponent implements OnInit {
   @Input() themeColor: any;
   @Input() playlists: Playlist[];
-  @Output() setEditedPlaylist: EventEmitter<any> = new EventEmitter();
+  @Output() showPlaylist: EventEmitter<any> = new EventEmitter();
 
-  handleSetEditedPlaylist = (id: number): void => {
-    this.setEditedPlaylist.emit(id);
+  handleShowPlaylist = (id: number): void => {
+    this.showPlaylist.emit(id);
   }
 
   constructor() { }

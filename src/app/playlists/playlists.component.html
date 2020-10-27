@@ -6,15 +6,17 @@
       <app-playlist-list
         [themeColor]="themeColor"
         [playlists]="playlists"
-        (setEditedPlaylist)="setEditedPlaylist($event)"
+        (showPlaylist)="showPlaylist($event)"
       ></app-playlist-list>
     </div>
 
     <div class="col-lg-6">
       <app-playlist-form
+        [playlists]="playlists"
         [edited]="edited"
         [selectedPlaylist]="selectedPlaylist"
         [themeColor]="themeColor"
+        (setEditedPlaylist)="setEditedPlaylist($event)"
         (addNewPlaylist)="addNewPlaylist()"
         (savePlaylist)="savePlaylist()"
         (closeEdit)="closeEdit()"

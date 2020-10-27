@@ -4,8 +4,21 @@
   [edited]="edited"
 ></app-playlist-form-new>
 
-<div *ngIf="selectedPlaylist && edited" class="card">
-  <app-card-content></app-card-content>
+{{ !!edited.id }}
+
+<app-playlist-detail
+  *ngIf="selectedPlaylist && edited && !edited.id"
+  [playlist]="playlists[0]"
+  (setEditedPlaylist)="handleSetEditedPlaylist($event)"
+>
+
+</app-playlist-detail>
+
+<app-card
+  *ngIf="selectedPlaylist && edited && !!edited.id"
+  [title]=" 'Edit Playlist' "
+  [description]=" 'You can edit all fields of your playlist here' "
+>
 
   <div class="card-body">
     <div class="form-group">
@@ -65,4 +78,4 @@
     </div>
   </div>
 
-</div>
+</app-card>

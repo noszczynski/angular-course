@@ -14,6 +14,7 @@ import { PlaylistFormNewComponent } from './playlists/form/playlist-form-new/pla
 import { CardContentComponent } from './card/card-content/card-content.component';
 import { CardComponent } from './card/card.component';
 import { PlaylistListRowComponent } from './playlists/playlist-list-row/playlist-list-row.component';
+import { PlaylistDetailComponent } from './playlists/playlist-detail/playlist-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PlaylistListRowComponent } from './playlists/playlist-list-row/playlist
     PlaylistFormNewComponent,
     CardContentComponent,
     CardComponent,
-    PlaylistListRowComponent
+    PlaylistListRowComponent,
+    PlaylistDetailComponent
   ],
     imports: [
         BrowserModule,

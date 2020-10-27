@@ -5,7 +5,9 @@ import {Component, Input, OnInit} from '@angular/core';
   template: `
     <div class="card">
       <app-card-content [title]="title" [description]="description"></app-card-content>
-      <ng-content></ng-content>
+      <div class="card-body">
+        <ng-content></ng-content>
+      </div>
     </div>
   `,
   styles: [

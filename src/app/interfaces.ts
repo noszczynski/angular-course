@@ -4,6 +4,7 @@ interface ID {
 
 interface Playlist extends ID {
   name: string | null;
+  description?: string | null | undefined;
   tracks: number;
   color: string;
   favourite: boolean;

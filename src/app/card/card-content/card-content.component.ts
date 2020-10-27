@@ -3,9 +3,9 @@ import {Component, Input, OnInit} from '@angular/core';
 @Component({
   selector: 'app-card-content',
   template: `
-    <div class="card-body">
-      <h4> {{ title }} </h4>
-      <p class="m-0"> {{ description }} </p>
+    <div *ngIf="title || description" class="card-body">
+      <h4 *ngIf="title"> {{ title }} </h4>
+      <p *ngIf="description" class="m-0"> {{ description }} </p>
       <ng-content></ng-content>
     </div>
   `,

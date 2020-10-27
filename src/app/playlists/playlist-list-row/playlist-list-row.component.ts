@@ -6,7 +6,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
     <div class="list__row">
       <span> {{ index + 1 }}. </span>
       <span class="list__item font-weight-bold" [ngStyle]="{color: playlist.color}">
-      <button class="list__item__button" (click)="handleSetEditedPlaylist(playlist.id)">
+      <button class="list__item__button" (click)="handleShowPlaylist(playlist.id)">
         {{ playlist.name }}
       </button>
     </span>
@@ -64,9 +64,9 @@ export class PlaylistListRowComponent implements OnInit {
 
   @Input() index: number;
   @Input() playlist: any;
-  @Output() setEditedPlaylist: EventEmitter<any> = new EventEmitter();
+  @Output() showPlaylist: EventEmitter<any> = new EventEmitter();
 
-  handleSetEditedPlaylist = (id: number) => this.setEditedPlaylist.emit(id);
+  handleShowPlaylist = (id: number) => this.showPlaylist.emit(id);
 
   constructor() { }
 

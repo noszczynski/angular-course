@@ -16,6 +16,7 @@ export class PlaylistsComponent implements OnInit {
 
   editedInitial: Playlist = {
     name: null,
+    description: null,
     tracks: 0,
     color: '#000000',
     favourite: false
@@ -27,6 +28,7 @@ export class PlaylistsComponent implements OnInit {
     {
       id: 1,
       name: 'The best of Adam',
+      description: 'lorem ipsum dolor sit amet',
       tracks: 23,
       color: '#c62347',
       favourite: true,
@@ -34,6 +36,7 @@ export class PlaylistsComponent implements OnInit {
     {
       id: 2,
       name: 'Summer 2020 Hits',
+      description: 'lorem ipsum dolor sit amet',
       tracks: 15,
       color: '#ddc216',
       favourite: true
@@ -55,12 +58,22 @@ export class PlaylistsComponent implements OnInit {
     }
   }
 
-  setEditedPlaylist = (id): void => {
+  showPlaylist = (id: number): void => {
     const arr = clone(this.playlists);
     const obj = arr.find(item => item.id === id);
 
-    this.selectedPlaylist = obj.id;
-    this.edited = {...obj};
+    if (obj && obj.id !== undefined && obj.id !== null) {
+      this.selectedPlaylist = id;
+    }
+  }
+
+  setEditedPlaylist = (id: number): void => {
+    const arr = clone(this.playlists);
+    const obj = arr.find(item => item.id === id);
+
+    if (obj) {
+      this.edited = {...obj};
+    }
   }
 
   addNewPlaylist = (): void => {

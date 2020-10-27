@@ -12,7 +12,7 @@
     *ngFor="let playlist of playlists; let i = index"
     [index]="i"
     [playlist]="playlist"
-    (setEditedPlaylist)="handleSetEditedPlaylist($event)"
+    (showPlaylist)="handleShowPlaylist($event)"
   ></app-playlist-list-row>
 
 </div>
