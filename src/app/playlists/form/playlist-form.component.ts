@@ -11,15 +11,13 @@ export class PlaylistFormComponent implements OnInit {
 
   constructor() { }
   @Input() selectedPlaylist: any;
+  @Input() activePlaylist: Playlist | undefined;
   @Input() edited: any;
   @Input() themeColor: string;
-  @Input() playlists: Playlist[];
   @Output() setEditedPlaylist: EventEmitter<any> = new EventEmitter();
   @Output() addNewPlaylist: EventEmitter<any> = new EventEmitter();
   @Output() savePlaylist: EventEmitter<any> = new EventEmitter();
   @Output() closeEdit: EventEmitter<any> = new EventEmitter();
-
-  active;
 
   handleSetEditedPlaylist = (id: number) => this.setEditedPlaylist.emit(id);
   handleAddNewPlaylist = () => this.addNewPlaylist.emit();
@@ -32,7 +30,6 @@ export class PlaylistFormComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.active = this.playlists.find(playlist => playlist.id === this.selectedPlaylist);
   }
 
 }

@@ -6,7 +6,7 @@
 
 <app-playlist-detail
   *ngIf="selectedPlaylist && edited && !edited.id"
-  [active]="active"
+  [activePlaylist]="activePlaylist"
   (setEditedPlaylist)="handleSetEditedPlaylist($event)"
 >
 

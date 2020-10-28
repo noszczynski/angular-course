@@ -12,9 +12,9 @@
 
     <div class="col-lg-6">
       <app-playlist-form
-        [playlists]="playlists"
         [edited]="edited"
         [selectedPlaylist]="selectedPlaylist"
+        [activePlaylist]="activePlaylist"
         [themeColor]="themeColor"
         (setEditedPlaylist)="setEditedPlaylist($event)"
         (addNewPlaylist)="addNewPlaylist()"

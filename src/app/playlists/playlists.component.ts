@@ -13,6 +13,7 @@ export class PlaylistsComponent implements OnInit {
 
   title = 'playlists';
   selectedPlaylist = null;
+  activePlaylist: Playlist = undefined;
 
   editedInitial: Playlist = {
     name: null,
@@ -58,12 +59,17 @@ export class PlaylistsComponent implements OnInit {
     }
   }
 
+  getActivePlaylist = (id: number): Playlist => {
+    return this.playlists.find(playlist => playlist.id === id) || undefined;
+  }
+
   showPlaylist = (id: number): void => {
     const arr = clone(this.playlists);
     const obj = arr.find(item => item.id === id);
 
     if (obj && obj.id !== undefined && obj.id !== null) {
       this.selectedPlaylist = id;
+      this.activePlaylist = this.getActivePlaylist(id);
     }
   }
 
