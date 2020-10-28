@@ -44,6 +44,10 @@ export class PlaylistsComponent implements OnInit {
     },
   ];
 
+  setInitialEdit = () => {
+    this.edited = clone(this.editedInitial);
+  }
+
   savePlaylist = () => {
     const item = clone(this.edited);
     const arr = clone(this.playlists);
@@ -53,8 +57,10 @@ export class PlaylistsComponent implements OnInit {
       const index = arr.findIndex(playlist => playlist.id === id);
 
       if (index !== -1) {
-        arr[index] = Object.assign({}, item);
+        arr[index] = clone(item);
         this.playlists = clone(arr);
+        this.selectedPlaylist = null;
+        this.setInitialEdit();
       }
     }
   }
@@ -68,6 +74,7 @@ export class PlaylistsComponent implements OnInit {
     const obj = arr.find(item => item.id === id);
 
     if (obj && obj.id !== undefined && obj.id !== null) {
+      this.setInitialEdit();
       this.selectedPlaylist = id;
       this.activePlaylist = this.getActivePlaylist(id);
     }
@@ -83,7 +90,7 @@ export class PlaylistsComponent implements OnInit {
   }
 
   addNewPlaylist = (): void => {
-    const obj = Object.assign({}, this.edited);
+    const obj = clone(this.edited);
 
     if (obj && !obj.name) {
       return;
@@ -98,12 +105,12 @@ export class PlaylistsComponent implements OnInit {
     });
 
 
-    this.edited = clone(this.editedInitial);
+    this.setInitialEdit();
     this.playlists = arr;
   }
 
   closeEdit = () => {
-    this.edited = clone(this.editedInitial);
+    this.setInitialEdit();
     this.selectedPlaylist = null;
   }
 

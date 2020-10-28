@@ -3,7 +3,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 @Component({
   selector: 'app-playlist-form-new',
   template: `
-    <app-card [title]=" 'TyTuł' " [description]=" 'DesCripTIon' ">
+    <app-card [title]="'New Playlist'" [description]="'create new playlist by title'">
 
       <div class="card-body">
         <div class="form-group">
