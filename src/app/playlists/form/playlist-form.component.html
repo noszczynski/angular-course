@@ -4,11 +4,9 @@
   [edited]="edited"
 ></app-playlist-form-new>
 
-{{ !!edited.id }}
-
 <app-playlist-detail
   *ngIf="selectedPlaylist && edited && !edited.id"
-  [playlist]="playlists[0]"
+  [active]="active"
   (setEditedPlaylist)="handleSetEditedPlaylist($event)"
 >
 

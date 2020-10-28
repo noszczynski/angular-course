@@ -19,16 +19,12 @@ export class PlaylistFormComponent implements OnInit {
   @Output() savePlaylist: EventEmitter<any> = new EventEmitter();
   @Output() closeEdit: EventEmitter<any> = new EventEmitter();
 
-  getPlaylist = () => {
-    return this.playlists.find(playlist => playlist.id === this.selectedPlaylist);
-  }
+  active;
 
   handleSetEditedPlaylist = (id: number) => this.setEditedPlaylist.emit(id);
   handleAddNewPlaylist = () => this.addNewPlaylist.emit();
   handleSavePlaylist = () => this.savePlaylist.emit();
   handleCloseEdit = () => this.closeEdit.emit();
-
-
 
   getButtonColors = () => ({
     backgroundColor: this.themeColor,
@@ -36,7 +32,7 @@ export class PlaylistFormComponent implements OnInit {
   })
 
   ngOnInit(): void {
-
+    this.active = this.playlists.find(playlist => playlist.id === this.selectedPlaylist);
   }
 
 }
