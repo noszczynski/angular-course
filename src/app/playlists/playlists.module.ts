@@ -9,24 +9,19 @@ import { PlaylistListRowComponent } from './playlist-list-row/playlist-list-row.
 import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.component';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from '../card/card.module';
+import { PlaylistsService } from './playlists.service';
 
 @NgModule({
-  declarations: [
-    PlaylistsComponent,
-    PlaylistFormComponent,
-    PlaylistFormNewComponent,
-    PlaylistListComponent,
-    PlaylistListRowComponent,
-    PlaylistDetailComponent,
-  ],
-  exports: [
-    PlaylistsComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    CardModule
-  ]
+    declarations: [
+        PlaylistsComponent,
+        PlaylistFormComponent,
+        PlaylistFormNewComponent,
+        PlaylistListComponent,
+        PlaylistListRowComponent,
+        PlaylistDetailComponent,
+    ],
+    exports: [PlaylistsComponent],
+    imports: [CommonModule, FormsModule, CardModule],
+    providers: [PlaylistsService], // { provide: PlaylistsService, useClass: PlaylistsService }  - allowed
 })
-
-export class PlaylistsModule { }
+export class PlaylistsModule {}
