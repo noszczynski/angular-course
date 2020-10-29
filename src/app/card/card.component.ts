@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
     selector: 'app-card',
     template: `
-        <div class="card mb-3">
+        <div class="card h-100">
             <img
                 *ngIf="image"
                 [src]="image"

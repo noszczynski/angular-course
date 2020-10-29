@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MusicSearchService } from '../music-search.service';
 
 @Component({
     selector: 'app-album-list',
     template: `
         <div class="p-3">
             <h2 class="text-white">Albums</h2>
+        </div>
+        <div class="d-flex p-3">
+            <input type="text" [(ngModel)]="searchTerm" />
+            <button (click)="onSearch()">Search</button>
         </div>
         <div class="cards">
             <app-album-card
@@ -16,58 +21,18 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./album-list.component.scss'],
 })
 export class AlbumListComponent implements OnInit {
-    constructor() {}
+    constructor(private musicSearch: MusicSearchService) {}
 
-    albums = [
-        {
-            id: 1,
-            name: 'Name 1',
-            description: 'lorem ipsum dolor sit',
-            images: [
-                { src: 'https://source.unsplash.com/user/erondu/640x640' },
-            ],
-        },
-        {
-            id: 2,
-            name: 'Name 2',
-            description: 'lorem ipsum dolor sit',
-            images: [
-                { src: 'https://source.unsplash.com/user/erondu/640x640' },
-            ],
-        },
-        {
-            id: 3,
-            name: 'Name 3',
-            description: 'lorem ipsum dolor sit',
-            images: [
-                { src: 'https://source.unsplash.com/user/erondu/640x640' },
-            ],
-        },
-        {
-            id: 4,
-            name: 'Name 4',
-            description: 'lorem ipsum dolor sit',
-            images: [
-                { src: 'https://source.unsplash.com/user/erondu/640x640' },
-            ],
-        },
-        {
-            id: 5,
-            name: 'Name 5',
-            description: 'lorem ipsum dolor sit',
-            images: [
-                { src: 'https://source.unsplash.com/user/erondu/640x640' },
-            ],
-        },
-        {
-            id: 6,
-            name: 'Name 6',
-            description: 'lorem ipsum dolor sit',
-            images: [
-                { src: 'https://source.unsplash.com/user/erondu/640x640' },
-            ],
-        },
-    ];
+    albums = [];
+    searchTerm = '';
 
-    ngOnInit(): void {}
+    onSearch = async () => {
+        this.albums = await this.musicSearch.setSearchTerm(this.searchTerm);
+    };
+
+    ngOnInit(): void {
+        (async () => {
+            this.albums = await this.musicSearch.getAlbums();
+        })();
+    }
 }

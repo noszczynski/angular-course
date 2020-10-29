@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import api from './services/api';
 
 @Component({
     selector: 'app-root',
@@ -24,15 +23,7 @@ import api from './services/api';
     encapsulation: ViewEncapsulation.None, // styles above are global
 })
 export class AppComponent {
-    constructor() {
-        api.get(`/me`)
-            .then((r) => {
-                console.log(r);
-            })
-            .catch((e) => {
-                console.log(e.message);
-            });
-    }
+    constructor() {}
 
     title = 'angular-app';
     themeColor = '#138496';

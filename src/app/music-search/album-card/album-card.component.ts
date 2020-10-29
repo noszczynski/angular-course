@@ -5,8 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
     template: `
         <app-card
             [title]="album.name"
-            [description]="album.description"
-            [image]="image.src"
+            [description]="description"
+            [image]="image.url"
         ></app-card>
     `,
     styleUrls: ['./album-card.component.scss'],
@@ -18,10 +18,14 @@ export class AlbumCardComponent implements OnInit {
     private set setAlbum(album): void {
         this.album = album;
         this.image = album.images[0];
+
+        const [artist] = album.artists;
+        this.description = artist.name;
     }
 
     album;
     image;
+    description;
 
     ngOnInit(): void {}
 }
