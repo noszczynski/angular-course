@@ -10,6 +10,7 @@ import { InputComponent } from './input/input.component';
 import { PlaylistsModule } from './playlists/playlists.module';
 import { CardModule } from './card/card.module';
 import { AuthService } from './auth.service';
+import { MusicSearchModule } from './music-search/music-search.module';
 
 @NgModule({
     declarations: [AppComponent, ButtonComponent, InputComponent],
@@ -20,6 +21,7 @@ import { AuthService } from './auth.service';
         FormsModule,
         CardModule,
         PlaylistsModule,
+        MusicSearchModule,
     ],
     providers: [AuthService],
     bootstrap: [AppComponent],
