@@ -11,9 +11,7 @@ import { PlaylistsService } from './playlists.service';
 export class PlaylistsComponent implements OnInit {
     @Input() themeColor: string;
 
-    constructor(private playlistService: PlaylistsService) {
-        this.playlists = this.playlistService.getPlaylists();
-    }
+    constructor(private playlistService: PlaylistsService) {}
 
     title = 'playlists';
     selectedPlaylist = null;
@@ -34,46 +32,31 @@ export class PlaylistsComponent implements OnInit {
         this.edited = clone(this.editedInitial);
     };
 
-    savePlaylist = () => {
-        const item = clone(this.edited);
-        const arr = clone(this.playlists);
+    savePlaylist = async () => {
+        const item = await clone(this.edited);
+        const result = await this.playlistService.savePlaylist(item);
 
-        if (item) {
-            const { id } = item;
-            const index = arr.findIndex((playlist) => playlist.id === id);
-
-            if (index !== -1) {
-                arr[index] = clone(item);
-                this.playlists = clone(arr);
-                this.selectedPlaylist = null;
-                this.setInitialEdit();
-            }
+        if (result) {
+            this.selectedPlaylist = null;
+            this.setInitialEdit();
         }
     };
 
-    getActivePlaylist = (id: number): Playlist => {
-        return (
-            this.playlists.find((playlist) => playlist.id === id) || undefined
-        );
-    };
-
     showPlaylist = (id: number): void => {
-        const arr = clone(this.playlists);
-        const obj = arr.find((item) => item.id === id);
+        const obj = this.playlistService.getPlaylist(id);
 
         if (obj && obj.id !== undefined && obj.id !== null) {
             this.setInitialEdit();
             this.selectedPlaylist = id;
-            this.activePlaylist = this.getActivePlaylist(id);
+            this.activePlaylist = clone(obj);
         }
     };
 
     setEditedPlaylist = (id: number): void => {
-        const arr = clone(this.playlists);
-        const obj = arr.find((item) => item.id === id);
+        const obj = this.playlistService.getPlaylist(id);
 
         if (obj) {
-            this.edited = { ...obj };
+            this.edited = clone(obj);
         }
     };
 
@@ -84,16 +67,8 @@ export class PlaylistsComponent implements OnInit {
             return;
         }
 
-        const arr = clone(this.playlists);
-        const id = Number(arr[arr.length - 1].id) + 1;
-
-        arr.push({
-            ...obj,
-            id,
-        });
-
+        this.playlistService.createPlaylist(obj);
         this.setInitialEdit();
-        this.playlists = arr;
     };
 
     closeEdit = () => {
@@ -102,6 +77,6 @@ export class PlaylistsComponent implements OnInit {
     };
 
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
+        this.playlists = this.playlistService.getPlaylists();
     }
 }

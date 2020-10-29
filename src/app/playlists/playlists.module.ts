@@ -10,6 +10,7 @@ import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.compo
 import { FormsModule } from '@angular/forms';
 import { CardModule } from '../card/card.module';
 import { PlaylistsService } from './playlists.service';
+import playlists from './playlists.data';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,22 @@ import { PlaylistsService } from './playlists.service';
     ],
     exports: [PlaylistsComponent],
     imports: [CommonModule, FormsModule, CardModule],
-    providers: [PlaylistsService], // { provide: PlaylistsService, useClass: PlaylistsService }  - allowed
+    providers: [
+        PlaylistsService,
+        { provide: 'playlists', useValue: playlists },
+    ],
+
+    // { provide: PlaylistsService, useClass: PlaylistsService }  - allowed
+    // { provide: PlaylistsService, useFactory: (data) => {
+    //       const newPlaylist = {
+    //         name: 'new Name',
+    //         color: '#4455fa',
+    //         favourite: false,
+    //         tracks: 0
+    //       }
+    //
+    //       data.push(newPlaylist)
+    //       return data;
+    // }, deps: ['playlists'] }
 })
 export class PlaylistsModule {}
