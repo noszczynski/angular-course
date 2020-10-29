@@ -1,8 +1,6 @@
-<div class="container" [attr.id]="title + '-container'">
+<div [attr.id]="title + '-container'">
 
-  <div class="row p-3">
-
-    <div class="col-lg-6">
+    <div>
       <app-playlist-list
         [themeColor]="themeColor"
         [playlists]="playlists"
@@ -10,7 +8,7 @@
       ></app-playlist-list>
     </div>
 
-    <div class="col-lg-6">
+    <div>
       <app-playlist-form
         [edited]="edited"
         [selectedPlaylist]="selectedPlaylist"
@@ -22,7 +20,5 @@
         (closeEdit)="closeEdit()"
       ></app-playlist-form>
     </div>
-
-  </div>
 
 </div>

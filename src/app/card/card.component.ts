@@ -4,17 +4,12 @@ import { Component, Input, OnInit } from '@angular/core';
     selector: 'app-card',
     template: `
         <div class="card">
-            <img
-                *ngIf="image"
-                [src]="image"
-                class="card-img-top img-fluid img-thumbnail"
-                alt="thumb"
-            />
+            <img *ngIf="image" [src]="image" alt="thumb" />
             <app-card-content
                 [title]="title"
                 [description]="description"
             ></app-card-content>
-            <div class="card-body">
+            <div class="card__body">
                 <ng-content></ng-content>
             </div>
         </div>
