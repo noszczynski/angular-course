@@ -2,6 +2,9 @@
 @import "../../styles.scss";
 
 .card {
+  @include margin(1rem);
+  @include padding(1rem);
+
   background-color: $melon;
   border-radius: 0.5rem;
   height: 100%;

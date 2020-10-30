@@ -1,15 +1,39 @@
+@import '../../../styles.scss';
+
 .list {
-  background-color: white;
+  @include margin(1rem);
+  @include padding(1rem);
+
+  background-color: $melon;
   border-radius: .25rem;
-  color: #3a3a3a;
-  padding: 1rem;
-  margin-bottom: 2rem;
+  color: $grape;
+  font-size: 1rem;
 
   &__header {
     border-bottom: 2px solid;
 
     &__item {
+      @include marginY(0, 1rem);
+
+      font-size: inherit;
       font-weight: bold;
+
+
+      &__button {
+        border: none;
+        background-color: transparent;
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+        color: inherit;
+        cursor: pointer;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+          opacity: 0.65;
+        }
+      }
     }
   }
 
@@ -19,4 +43,5 @@
     align-items: center;
     width: 100%;
   }
+
 }

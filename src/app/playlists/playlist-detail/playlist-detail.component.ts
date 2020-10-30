@@ -10,7 +10,10 @@ import { Playlist } from '../../interfaces';
             [description]="activePlaylist.description"
         >
             <div>
-                <button (click)="handleSetEditedPlaylist(activePlaylist.id)">
+                <button
+                    (click)="handleSetEditedPlaylist(activePlaylist.id)"
+                    class="btn btn--dark"
+                >
                     Edit
                 </button>
             </div>

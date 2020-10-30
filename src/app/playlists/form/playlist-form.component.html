@@ -19,27 +19,30 @@
 >
 
   <div class="card__body">
-    <div>
+    <div class="flex__column">
       <label for="add_name">Name:</label>
       <input
         type="text"
         id="add_name"
+        class="input input--dark"
         [(ngModel)]="edited.name"
       />
     </div>
-    <div>
+    <div class="flex__column">
       <label for="add_tracks">Tracks</label>
       <input
         type="number"
         id="add_tracks"
+        class="input input--dark"
         [(ngModel)]="edited.tracks"
       />
     </div>
-    <div>
+    <div class="flex__column">
       <label for="add_color">Color</label>
       <input
         type="color"
         id="add_color"
+        class="input input__color input--dark"
         [(ngModel)]="edited.color"
       />
     </div>
@@ -56,14 +59,14 @@
     <div>
       <button
         (click)="handleSavePlaylist()"
-        [ngStyle]="getButtonColors()"
+        class="btn btn--dark"
       >
         Save
       </button>
 
       <button
         (click)="handleCloseEdit()"
-        [ngStyle]="getButtonColors()"
+        class="btn btn--dark"
       >
         Close
       </button>

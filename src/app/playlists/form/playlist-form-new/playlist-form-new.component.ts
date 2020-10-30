@@ -7,22 +7,28 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
             [title]="'New Playlist'"
             [description]="'create new playlist by title'"
         >
-            <div class="card__body">
-                <div>
+            <div class="card__body mt-2 p-0">
+                <div class="flex__column">
                     <label for="create_name">Name:</label>
                     <input
                         type="text"
                         id="create_name"
+                        class="input input--dark"
                         [(ngModel)]="edited.name"
                     />
                 </div>
                 <div>
-                    <button (click)="handleAddNewPlaylist()">Create</button>
+                    <button
+                        (click)="handleAddNewPlaylist()"
+                        class="btn btn--dark"
+                    >
+                        Create
+                    </button>
                 </div>
             </div>
         </app-card>
     `,
-    styles: [],
+    styleUrls: ['./playlist-form-new.component.scss'],
 })
 export class PlaylistFormNewComponent implements OnInit {
     @Input() edited: any;
