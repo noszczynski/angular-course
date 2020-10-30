@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import api from '../services/api';
 import { clone } from '../utils';
 
@@ -6,10 +6,14 @@ import { clone } from '../utils';
     providedIn: 'root',
 })
 export class MusicSearchService {
-    constructor() {}
+    constructor() {
+        (async () => await this.setSearchTerm(this.searchTerm))();
+    }
+
+    albumsUpdated: EventEmitter<any> = new EventEmitter();
 
     albums = [];
-    searchTerm = 'star wars';
+    searchTerm = 'cyberpunk';
 
     searchAlbums = async (term = this.searchTerm) => {
         const baseQuery = '/search?type=album&market=PL&query=';
@@ -39,6 +43,7 @@ export class MusicSearchService {
 
     setAlbums = (albums: any[] = []) => {
         this.albums = clone(albums);
+        this.albumsUpdated.emit(albums);
     };
 
     getAlbums = async () => {

@@ -38,8 +38,8 @@ export class AlbumListComponent implements OnInit {
     };
 
     ngOnInit(): void {
-        (async () => {
-            this.albums = await this.musicSearch.setSearchTerm('harry potter');
-        })();
+        this.musicSearch.albumsUpdated.subscribe((albums) => {
+            this.albums = albums;
+        });
     }
 }

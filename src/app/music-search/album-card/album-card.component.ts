@@ -15,7 +15,7 @@ export class AlbumCardComponent implements OnInit {
     constructor() {}
 
     @Input('album')
-    private set setAlbum(album): void {
+    set setAlbum(album): void {
         this.album = album;
         this.image = album.images[0];
 
