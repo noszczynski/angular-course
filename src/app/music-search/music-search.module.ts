@@ -8,12 +8,14 @@ import { AlbumCardComponent } from './album-card/album-card.component';
 import { CardModule } from '../card/card.module';
 import { MusicSearchService } from './music-search.service';
 import { routerModule } from './music-search.routing';
+import { AlbumComponent } from './album/album.component';
 
 @NgModule({
     declarations: [
         MusicSearchComponent,
         AlbumListComponent,
         AlbumCardComponent,
+        AlbumComponent,
     ],
     imports: [CommonModule, CardModule, FormsModule, routerModule],
     exports: [AlbumListComponent, MusicSearchComponent],

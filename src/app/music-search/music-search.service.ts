@@ -57,4 +57,17 @@ export class MusicSearchService {
     getAlbums = async () => {
         return this.albums;
     };
+
+    getAlbum = async (id: string) => {
+        const query = `/albums/${id}`;
+
+        const result = await api
+            .get(query)
+            .then((response) => response.data)
+            .catch(() => tokenStorage.clear());
+
+        await console.log(result);
+
+        return result;
+    };
 }

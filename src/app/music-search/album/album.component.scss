@@ -1,0 +1,42 @@
+@import "./src/styles";
+
+.album {
+  @include grid(2, 'flex-start');
+  @include margin(1rem);
+
+
+  border: 1px dashed black;
+
+  &__playlist {
+
+    &__row {
+      display: grid;
+      grid-template-columns: 32px 2fr 1fr;
+    }
+
+    &__header {
+
+    }
+
+    &__wrapper {
+
+    }
+
+  }
+
+  &__song {
+    @include marginY(0, 1rem);
+
+    &__header {
+
+    }
+
+    &__field {
+
+    }
+  }
+
+  &__card {
+
+  }
+}
