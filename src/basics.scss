@@ -123,9 +123,8 @@
   flex-direction: column;
 }
 
-.flex__row {
+.flex {
   display: flex;
-  flex-direction: column;
 }
 
 .flex__column__center {
@@ -137,7 +136,7 @@
 
 .flex__row__center {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }

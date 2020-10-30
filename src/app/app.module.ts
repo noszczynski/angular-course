@@ -9,9 +9,10 @@ import { CardModule } from './card/card.module';
 import { AuthService } from './auth.service';
 import { MusicSearchModule } from './music-search/music-search.module';
 import { routerModule } from './app.routing';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, NavigationComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

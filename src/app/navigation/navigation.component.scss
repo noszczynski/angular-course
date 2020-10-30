@@ -1,0 +1,54 @@
+@import '../../styles';
+
+
+.nav {
+  @include flex('row', 'center', 'space-between');
+  @include paddingX(1rem);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $garlic;
+
+  &__box {
+
+  }
+
+  &__logo {
+    @include size(64px, 64px);
+  }
+
+  &__list {
+    @include flex('row', 'center', 'space-between');
+
+    list-style: none;
+
+    &__item {
+      @include padding(0.5rem, 1.5rem, 0.5rem, 1.5rem);
+      @include marginX(0.5rem);
+
+      background-color: $blueberry;
+      color: $garlic;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+
+      &.active {
+        border-bottom-color: $watermelon;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        margin: 0;
+      }
+
+    }
+  }
+
+}
+
+
+
+

@@ -45,31 +45,31 @@ p, span, strong {
 button {
   background-color: transparent;
   border: none;
+}
 
-  &.btn {
-    border-radius: .25rem;
-    padding: 0.75rem 1.75rem;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform .15s ease-in-out;
-    margin: 0.5rem 0;
+.btn {
+  border-radius: .25rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform .15s ease-in-out;
+  margin: 0.5rem 0;
 
-    &--light {
-      background-color: $melon;
-      color: $blueberry;
-    }
-
-    &--dark {
-      background-color: $blueberry;
-      color: $garlic;
-    }
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-
+  &--light {
+    background-color: $melon;
+    color: $blueberry;
   }
+
+  &--dark {
+    background-color: $blueberry;
+    color: $garlic;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
 }
 
 input {
@@ -125,6 +125,11 @@ img {
   display: block;
   object-fit: cover;
   object-position: center;
+}
+
+@mixin size($h: 100%, $w: 100%) {
+  height: #{$h};
+  width: #{$w};
 }
 
 @mixin flex ($direction: 'column', $align: 'center', $justify: 'center') {
@@ -190,7 +195,7 @@ img {
 
 }
 
-@mixin padding($top: 0, $right: 0, $bottom: 0, $left: 0) {
+@mixin padding($top: 0, $right: false, $bottom: false, $left: false) {
   @if $right {
     padding-right: #{$right};
   }
@@ -203,9 +208,7 @@ img {
     padding-left: #{$left};
   }
 
-  @if($top && $left == false && $right == false && $bottom == false) {
-    padding: #{$top};
-  } @else if $top {
+  @if $top {
     padding-top: #{$top};
   }
 }
@@ -239,3 +242,7 @@ img {
 //    }
 //  }
 //}
+
+.content {
+  @include marginY(8rem, 0);
+}

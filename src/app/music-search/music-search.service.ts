@@ -17,7 +17,7 @@ export class MusicSearchService {
     searchTerm = 'cyberpunk';
 
     searchAlbums = async (term = this.searchTerm) => {
-        if (term && term.length > 3) {
+        if (term && term.length >= 3) {
             const baseQuery = '/search?type=album&market=PL&query=';
             const query = `${baseQuery}${term.replace(' ', '+')}`;
 
