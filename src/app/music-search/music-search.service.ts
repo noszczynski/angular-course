@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import api from '../services/api';
 import { clone } from '../utils';
+import tokenStorage from '../services/tokenStorage';
 
 @Injectable({
     providedIn: 'root',
@@ -16,21 +17,28 @@ export class MusicSearchService {
     searchTerm = 'cyberpunk';
 
     searchAlbums = async (term = this.searchTerm) => {
-        const baseQuery = '/search?type=album&market=PL&query=';
-        const query = `${baseQuery}${term.replace(' ', '+')}`;
+        if (term && term.length > 3) {
+            const baseQuery = '/search?type=album&market=PL&query=';
+            const query = `${baseQuery}${term.replace(' ', '+')}`;
 
-        const result = await api.get(query).then((response) => response);
+            const result = await api
+                .get(query)
+                .then((response) => response)
+                .catch(() => tokenStorage.clear());
 
-        if (
-            result &&
-            result.data &&
-            result.data.albums &&
-            result.data.albums.items
-        ) {
-            return result.data.albums.items;
+            if (
+                result &&
+                result.data &&
+                result.data.albums &&
+                result.data.albums.items
+            ) {
+                return result.data.albums.items;
+            }
+
+            return [];
         }
 
-        return [];
+        return this.albums;
     };
 
     setSearchTerm = async (term: string) => {
