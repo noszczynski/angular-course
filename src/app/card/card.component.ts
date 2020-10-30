@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-card',
+    styleUrls: ['./card.component.scss'],
     template: `
         <div class="card">
             <img *ngIf="image" [src]="image" alt="thumb" />
@@ -14,7 +15,6 @@ import { Component, Input, OnInit } from '@angular/core';
             </div>
         </div>
     `,
-    styles: [],
 })
 export class CardComponent implements OnInit {
     @Input() title?: string;

@@ -4,12 +4,18 @@ import { MusicSearchService } from '../music-search.service';
 @Component({
     selector: 'app-album-list',
     template: `
-        <div>
-            <h2>Albums</h2>
-        </div>
-        <div>
-            <input type="text" [(ngModel)]="searchTerm" />
-            <button (click)="onSearch()">Search</button>
+        <div class="flex-column p-2">
+            <h1>Albums</h1>
+            <div class="grid__columns--2 mw-50">
+                <input
+                    class="input input--dark"
+                    type="text"
+                    [(ngModel)]="searchTerm"
+                />
+                <button class="btn btn--light" (click)="onSearch()">
+                    Search
+                </button>
+            </div>
         </div>
         <div class="cards">
             <app-album-card
@@ -32,7 +38,7 @@ export class AlbumListComponent implements OnInit {
 
     ngOnInit(): void {
         (async () => {
-            this.albums = await this.musicSearch.getAlbums();
+            this.albums = await this.musicSearch.setSearchTerm('harry potter');
         })();
     }
 }

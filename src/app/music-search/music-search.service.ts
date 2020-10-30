@@ -6,9 +6,7 @@ import { clone } from '../utils';
     providedIn: 'root',
 })
 export class MusicSearchService {
-    constructor() {
-        this.searchAlbums();
-    }
+    constructor() {}
 
     albums = [];
     searchTerm = 'star wars';
