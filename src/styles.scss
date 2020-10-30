@@ -175,6 +175,14 @@ input {
   }
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
 @mixin flex ($direction: 'column', $align: 'center', $justify: 'center') {
   display: flex;
   flex-direction: #{$direction};
@@ -182,19 +190,41 @@ input {
   justify-content: #{$justify};
 }
 
-@mixin grid ($columns: 2, $align: 'center', $justify: 'center', $rows: 1) {
+@mixin grid ($columns: 2, $align: 'center', $justify: 'center', $gap: 1rem, $rows: 1) {
   display: grid;
-  grid-template-columns: #{$columns};
-  grid-template-rows: #{$rows};
+  grid-template-columns: repeat(#{$columns}, 1fr);
+  grid-template-rows: repeat(#{$rows}, 1fr);
   align-items: #{$align};
   justify-content: #{$justify};
+
+  @if $gap {
+    grid-gap: #{$gap};
+  }
 }
 
-@mixin margin($top, $right, $bottom, $left) {
-  margin: #{$top, $right, $bottom, $left};
+@mixin margin($top: false, $right: false, $bottom: false, $left: false) {
+
+  @if $right {
+    margin-right: #{$right};
+  }
+
+  @if $bottom {
+    margin-bottom: #{$bottom};
+  }
+
+  @if $left {
+    margin-left: #{$left};
+  }
+
+  @if($top && $left == false && $right == false && $bottom == false) {
+    margin: #{$top};
+  } @else if $top {
+    margin-top: #{$top};
+  }
+
 }
 
-@mixin marginX($right, $left) {
+@mixin marginX($right: 0, $left: 0) {
   margin-right: #{$right};
 
   @if($left) {
@@ -205,7 +235,7 @@ input {
 
 }
 
-@mixin marginY($top, $bottom) {
+@mixin marginY($top: 0, $bottom: 0) {
   margin-top: #{$top};
 
   @if($bottom) {
@@ -216,11 +246,11 @@ input {
 
 }
 
-@mixin padding($top, $right, $bottom, $left) {
+@mixin padding($top: 0, $right: 0, $bottom: 0, $left: 0) {
   padding: #{$top, $right, $bottom, $left};
 }
 
-@mixin paddingX($right, $left) {
+@mixin paddingX($right: 0, $left: false) {
   padding-right: #{$right};
 
   @if($left) {
@@ -231,7 +261,7 @@ input {
 
 }
 
-@mixin paddingY($top, $bottom) {
+@mixin paddingY($top: 0, $bottom: false) {
   padding-top: #{$top};
 
   @if($bottom) {
@@ -242,9 +272,13 @@ input {
 
 }
 
-@mixin color($variable) {
-  color: #{$variable}
-}
+//@mixin gridMediaColumns($widths, $fractions]) {
+//  @each $width in $widths {
+//    @media scrren and (min-width: #{$width}) {
+//      grid-template-columns: repeat($fractions[$width], '1fr');
+//    }
+//  }
+//}
 
 .flex__column {
   display: flex;

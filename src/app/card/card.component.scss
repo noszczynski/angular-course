@@ -1,5 +1,26 @@
 @import "../../variables.scss";
+@import "../../styles.scss";
 
 .card {
-  background-color: $watermelon;
+  background-color: $melon;
+  border-radius: 0.5rem;
+  height: 100%;
+
+  &__body {
+    @include paddingX(1rem);
+  }
+
+  &__content {
+
+  }
+
+  &__title {
+
+  }
+
+  &__description {
+    @include paddingY(0, 1rem);
+    @include margin(0)
+  }
+
 }

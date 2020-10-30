@@ -4,12 +4,13 @@ import { MusicSearchService } from '../music-search.service';
 @Component({
     selector: 'app-album-list',
     template: `
-        <div class="flex-column p-2">
-            <h1>Albums</h1>
-            <div class="grid__columns--2 mw-50">
+        <div class="albums">
+            <h1 class="albums__title">Albums</h1>
+            <div class="albums__searchbar">
                 <input
                     class="input input--dark"
                     type="text"
+                    placeholder="Search sth"
                     [(ngModel)]="searchTerm"
                 />
                 <button class="btn btn--light" (click)="onSearch()">
