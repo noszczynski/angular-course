@@ -1,76 +1,78 @@
-<app-playlist-form-new
-  *ngIf="!selectedPlaylist"
-  (addNewPlaylist)="handleAddNewPlaylist()"
-  [edited]="edited"
-></app-playlist-form-new>
+<div class="p-1">
+  <app-playlist-form-new
+    *ngIf="!selectedPlaylist"
+    (addNewPlaylist)="handleAddNewPlaylist()"
+    [edited]="edited"
+  ></app-playlist-form-new>
 
-<app-playlist-detail
-  *ngIf="selectedPlaylist && edited && !edited.id"
-  [activePlaylist]="activePlaylist"
-  (setEditedPlaylist)="handleSetEditedPlaylist($event)"
->
+  <app-playlist-detail
+    *ngIf="selectedPlaylist && edited && !edited.id"
+    [activePlaylist]="activePlaylist"
+    (setEditedPlaylist)="handleSetEditedPlaylist($event)"
+  >
 
-</app-playlist-detail>
+  </app-playlist-detail>
 
-<app-card
-  *ngIf="selectedPlaylist && edited && !!edited.id"
-  [title]=" 'Edit Playlist' "
-  [description]=" 'You can edit all fields of your playlist here' "
->
+  <app-card
+    *ngIf="selectedPlaylist && edited && !!edited.id"
+    [title]=" 'Edit Playlist' "
+    [description]=" 'You can edit all fields of your playlist here' "
+  >
 
-  <div class="card__body">
-    <div class="flex__column">
-      <label for="add_name">Name:</label>
-      <input
-        type="text"
-        id="add_name"
-        class="input input--dark"
-        [(ngModel)]="edited.name"
-      />
-    </div>
-    <div class="flex__column">
-      <label for="add_tracks">Tracks</label>
-      <input
-        type="number"
-        id="add_tracks"
-        class="input input--dark"
-        [(ngModel)]="edited.tracks"
-      />
-    </div>
-    <div class="flex__column">
-      <label for="add_color">Color</label>
-      <input
-        type="color"
-        id="add_color"
-        class="input input__color input--dark"
-        [(ngModel)]="edited.color"
-      />
-    </div>
-    <div>
-      <label for="add_favourite">
+    <div class="card__body">
+      <div class="flex__column">
+        <label for="add_name">Name:</label>
         <input
-          type="checkbox"
-          id="add_favourite"
-          [(ngModel)]="edited.favourite"
+          type="text"
+          id="add_name"
+          class="input input--dark"
+          [(ngModel)]="edited.name"
         />
-        <span>Favourite</span>
-      </label>
-    </div>
-    <div>
-      <button
-        (click)="handleSavePlaylist()"
-        class="btn btn--dark"
-      >
-        Save
-      </button>
+      </div>
+      <div class="flex__column">
+        <label for="add_tracks">Tracks</label>
+        <input
+          type="number"
+          id="add_tracks"
+          class="input input--dark"
+          [(ngModel)]="edited.tracks"
+        />
+      </div>
+      <div class="flex__column">
+        <label for="add_color">Color</label>
+        <input
+          type="color"
+          id="add_color"
+          class="input input__color input--dark"
+          [(ngModel)]="edited.color"
+        />
+      </div>
+      <div>
+        <label for="add_favourite">
+          <input
+            type="checkbox"
+            id="add_favourite"
+            [(ngModel)]="edited.favourite"
+          />
+          <span>Favourite</span>
+        </label>
+      </div>
+      <div>
+        <button
+          (click)="handleSavePlaylist()"
+          class="btn btn--dark"
+        >
+          Save
+        </button>
 
-      <button
-        (click)="handleCloseEdit()"
-        class="btn btn--dark"
-      >
-        Close
-      </button>
+        <button
+          (click)="handleCloseEdit()"
+          class="btn btn--dark"
+        >
+          Close
+        </button>
+      </div>
     </div>
-  </div>
 
-</app-card>
+  </app-card>
+</div>
