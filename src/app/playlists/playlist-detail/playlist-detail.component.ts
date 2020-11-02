@@ -7,7 +7,7 @@ import { Playlist } from '../../interfaces';
         <app-card
             *ngIf="activePlaylist"
             [title]="activePlaylist.name"
-            [description]="activePlaylist.description"
+            [description]="activePlaylist.description || 'No description'"
         >
             <div>
                 <button

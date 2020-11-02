@@ -72,13 +72,13 @@ button {
 
 }
 
-input {
+input, textarea {
   background-color: transparent;
   border-radius: .5rem;
+  font-size: 16px;
 
   &.input {
     padding: 0.75rem 1.75rem;
-    font-size: 1rem;
     border: 0;
     transition: border-bottom-color .15s ease-in-out;
     background-color: lighten($garlic, 3);
@@ -117,6 +117,10 @@ input {
       }
     }
   }
+}
+
+textarea {
+  min-height: 10rem;
 }
 
 .link {
