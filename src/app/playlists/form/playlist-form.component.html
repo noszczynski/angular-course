@@ -9,6 +9,7 @@
     *ngIf="selectedPlaylist && edited && !edited.id"
     [activePlaylist]="activePlaylist"
     (setEditedPlaylist)="handleSetEditedPlaylist($event)"
+    (removePlaylist)="handleRemovePlaylist($event)"
   >
 
   </app-playlist-detail>
@@ -57,14 +58,14 @@
           <span>Favourite</span>
         </label>
       </div>
-      <div>
+      <div class="flex__row__start">
         <button
           (click)="handleSavePlaylist()"
           class="btn btn--dark"
         >
           Save
         </button>
-
+        &nbsp;
         <button
           (click)="handleCloseEdit()"
           class="btn btn--dark"

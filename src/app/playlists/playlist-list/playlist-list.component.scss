@@ -17,27 +17,32 @@
 
       font-size: inherit;
       font-weight: bold;
+    }
+  }
 
+  &__item {
+    font-size: inherit;
 
-      &__button {
-        border: none;
-        background-color: transparent;
-        font-size: 1rem;
-        padding: 0;
-        margin: 0;
-        font-weight: bold;
-        color: inherit;
-        cursor: pointer;
-        transition: opacity 0.2s ease-in-out;
+    &__button {
+      border: none;
+      background-color: transparent;
+      font-size: 1rem;
+      padding: 0;
+      margin: 0;
+      font-weight: bold;
+      color: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s ease-in-out;
 
-        &:hover {
-          opacity: 0.65;
-        }
+      &:hover {
+        opacity: 0.65;
       }
     }
   }
 
   &__row {
+    @include marginY(0, 1rem);
+
     display: grid;
     grid-template-columns: 2rem minmax(200px, 1fr) 4rem 5rem;
     align-items: center;

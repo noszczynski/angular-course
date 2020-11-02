@@ -71,6 +71,10 @@ export class PlaylistsComponent implements OnInit {
         this.setInitialEdit();
     };
 
+    removePlaylist = (id: number): void => {
+        this.playlistService.removePlaylist(id);
+    };
+
     closeEdit = () => {
         this.setInitialEdit();
         this.selectedPlaylist = null;
@@ -78,5 +82,9 @@ export class PlaylistsComponent implements OnInit {
 
     ngOnInit(): void {
         this.playlists = this.playlistService.getPlaylists();
+
+        this.playlistService.playlistsUpdated.subscribe((playlists) => {
+            this.playlists = playlists;
+        });
     }
 }

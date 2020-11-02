@@ -12,7 +12,7 @@ import { CardModule } from '../card/card.module';
 import { PlaylistsService } from './playlists.service';
 import { routerModule } from './playlists.routing';
 
-import playlists from './playlists.data';
+// import playlists from './playlists.data';
 
 @NgModule({
     declarations: [
@@ -27,7 +27,7 @@ import playlists from './playlists.data';
     imports: [CommonModule, FormsModule, CardModule, routerModule],
     providers: [
         PlaylistsService,
-        { provide: 'playlists', useValue: playlists },
+        // { provide: 'playlists', useValue: playlists },
     ],
 
     // { provide: PlaylistsService, useClass: PlaylistsService }  - allowed

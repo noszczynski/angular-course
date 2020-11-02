@@ -156,23 +156,23 @@ img {
   width: #{$w};
 }
 
-@mixin flex ($direction: 'column', $align: 'center', $justify: 'center') {
+@mixin flex ($direction: column, $align: center, $justify: center, $position: static, $wrap: wrap) {
   display: flex;
   flex-direction: #{$direction};
   align-items: #{$align};
   justify-content: #{$justify};
+  position: #{$position};
+  flex-wrap: #{$wrap};
 }
 
-@mixin grid ($columns: 2, $align: 'center', $justify: 'center', $gap: 1rem, $rows: 1) {
+@mixin grid ($columns: 2, $align: center, $justify: center, $column-gap: 1rem, $row-gap: 1rem, $rows: 1) {
   display: grid;
   grid-template-columns: repeat(#{$columns}, 1fr);
   grid-template-rows: repeat(#{$rows}, 1fr);
   align-items: #{$align};
   justify-content: #{$justify};
-
-  @if $gap {
-    grid-gap: #{$gap};
-  }
+  column-gap: #{$column-gap};
+  row-gap: #{$row-gap};
 }
 
 @mixin margin($top: false, $right: false, $bottom: false, $left: false) {
@@ -189,7 +189,7 @@ img {
     margin-left: #{$left};
   }
 
-  @if($top && $left == false && $right == false && $bottom == false) {
+  @if($top and $left == false and $right == false and $bottom == false) {
     margin: #{$top};
   } @else if $top {
     margin-top: #{$top};
@@ -219,22 +219,8 @@ img {
 
 }
 
-@mixin padding($top: 0, $right: false, $bottom: false, $left: false) {
-  @if $right {
-    padding-right: #{$right};
-  }
-
-  @if $bottom {
-    padding-bottom: #{$bottom};
-  }
-
-  @if $left {
-    padding-left: #{$left};
-  }
-
-  @if $top {
-    padding-top: #{$top};
-  }
+@mixin padding($padding: 0) {
+  padding: #{$padding};
 }
 
 @mixin paddingX($right: 0, $left: false) {
@@ -258,14 +244,6 @@ img {
   }
 
 }
-
-//@mixin gridMediaColumns($widths, $fractions]) {
-//  @each $width in $widths {
-//    @media scrren and (min-width: #{$width}) {
-//      grid-template-columns: repeat($fractions[$width], '1fr');
-//    }
-//  }
-//}
 
 .content {
   @include marginY(8rem, 0);

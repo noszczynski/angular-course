@@ -1,4 +1,4 @@
-<div class="flex__row__center" [attr.id]="title + '-container'">
+<div class="playlists" [attr.id]="title + '-container'">
 
     <div>
       <app-playlist-list
@@ -15,6 +15,7 @@
         [activePlaylist]="activePlaylist"
         [themeColor]="themeColor"
         (setEditedPlaylist)="setEditedPlaylist($event)"
+        (removePlaylist)="removePlaylist($event)"
         (addNewPlaylist)="addNewPlaylist()"
         (savePlaylist)="savePlaylist()"
         (closeEdit)="closeEdit()"

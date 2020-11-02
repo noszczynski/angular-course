@@ -16,6 +16,13 @@ import { Playlist } from '../../interfaces';
                 >
                     Edit
                 </button>
+                &nbsp;
+                <button
+                    (click)="handleRemovePlaylist(activePlaylist.id)"
+                    class="btn btn--dark"
+                >
+                    Remove
+                </button>
             </div>
         </app-card>
     `,
@@ -24,8 +31,10 @@ import { Playlist } from '../../interfaces';
 export class PlaylistDetailComponent implements OnInit {
     @Input() activePlaylist: Playlist | undefined;
     @Output() setEditedPlaylist: EventEmitter<any> = new EventEmitter();
+    @Output() removePlaylist: EventEmitter<any> = new EventEmitter();
 
     handleSetEditedPlaylist = (id: number) => this.setEditedPlaylist.emit(id);
+    handleRemovePlaylist = (id: number) => this.removePlaylist.emit(id);
 
     constructor() {}
 

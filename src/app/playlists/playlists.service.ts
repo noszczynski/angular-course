@@ -1,14 +1,17 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { EventEmitter, Inject, Injectable, Optional } from '@angular/core';
 import { Playlist } from '../interfaces';
 import { clone } from '../utils';
+import playlistsStorage from '../services/playlistsStorage';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PlaylistsService {
     constructor(@Optional() @Inject('playlists') playlists) {
-        this.playlists = playlists || [];
+        this.playlists = playlistsStorage.getAll() || [];
     }
+
+    playlistsUpdated: EventEmitter<any> = new EventEmitter();
 
     playlists: Playlist[] = [];
 
@@ -16,6 +19,12 @@ export class PlaylistsService {
         return (
             this.playlists.find((playlist) => playlist.id === id) || undefined
         );
+    };
+
+    setPlaylists = (playlists) => {
+        playlistsStorage.set(playlists);
+        this.playlistsUpdated.emit(playlists);
+        this.playlists = playlists;
     };
 
     savePlaylist = (item: Playlist): boolean => {
@@ -26,7 +35,7 @@ export class PlaylistsService {
 
             if (index !== -1) {
                 arr[index] = clone(item);
-                this.playlists = clone(arr);
+                this.setPlaylists(clone(arr));
 
                 return true;
             }
@@ -44,9 +53,21 @@ export class PlaylistsService {
             id,
         });
 
+        playlistsStorage.set(arr);
+        this.setPlaylists(arr);
+    };
+
+    removePlaylist = (id: number): void => {
+        const arr = clone(this.playlists);
+        const index = arr.findIndex((item) => item.id === id);
+
+        arr.splice(index, 1);
+
+        console.log(index);
         console.log(arr);
 
-        this.playlists = arr;
+        playlistsStorage.set(arr);
+        this.setPlaylists(arr);
     };
 
     getPlaylists = (): Playlist[] => {

@@ -19,12 +19,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
             <span class="list__item"> {{ playlist.tracks }} </span>
             <span class="list__item">
                 <span [ngClass]="{ list__item__favourite: playlist.favourite }">
-                    <input
-                        type="checkbox"
-                        id="favourite"
-                        [(ngModel)]="playlist.favourite"
-                    />
-                    <label for="favourite"></label>
+                    {{ playlist.favourite ? 'Yes' : 'No' }}
                 </span>
             </span>
         </div>

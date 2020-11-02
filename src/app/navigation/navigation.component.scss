@@ -2,7 +2,7 @@
 
 
 .nav {
-  @include flex('row', 'center', 'space-between');
+  @include flex(row, center, space-between);
   @include paddingX(1rem);
 
   z-index: 100;
@@ -27,7 +27,8 @@
     list-style: none;
 
     &__item {
-      @include padding(0.5rem, 1.5rem, 0.5rem, 1.5rem);
+      @include paddingX(1.5rem);
+      @include paddingY(0.5rem);
       @include marginX(0.5rem);
 
       background-color: $blueberry;

@@ -13,11 +13,13 @@ export class PlaylistFormComponent implements OnInit {
     @Input() edited: any;
     @Input() themeColor: string;
     @Output() setEditedPlaylist: EventEmitter<any> = new EventEmitter();
+    @Output() removePlaylist: EventEmitter<any> = new EventEmitter();
     @Output() addNewPlaylist: EventEmitter<any> = new EventEmitter();
     @Output() savePlaylist: EventEmitter<any> = new EventEmitter();
     @Output() closeEdit: EventEmitter<any> = new EventEmitter();
 
     handleSetEditedPlaylist = (id: number) => this.setEditedPlaylist.emit(id);
+    handleRemovePlaylist = (id: number) => this.removePlaylist.emit(id);
     handleAddNewPlaylist = () => this.addNewPlaylist.emit();
     handleSavePlaylist = () => this.savePlaylist.emit();
     handleCloseEdit = () => this.closeEdit.emit();
