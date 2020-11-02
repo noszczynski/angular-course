@@ -1,4 +1,11 @@
-<div class="p-1">
+<div class="flex__column m-1">
+
+   <div class="mb-2" [ngSwitch]="true">
+     <h4 class="m-0" *ngSwitchCase="!selectedPlaylist">Create</h4>
+     <h4 class="m-0" *ngSwitchCase="selectedPlaylist && edited && !edited.id">Playlist</h4>
+     <h4 class="m-0" *ngSwitchCase="selectedPlaylist && edited && !!edited.id">Edit</h4>
+   </div>
+
   <app-playlist-form-new
     *ngIf="!selectedPlaylist"
     (addNewPlaylist)="handleAddNewPlaylist()"
@@ -10,9 +17,7 @@
     [activePlaylist]="activePlaylist"
     (setEditedPlaylist)="handleSetEditedPlaylist($event)"
     (removePlaylist)="handleRemovePlaylist($event)"
-  >
-
-  </app-playlist-detail>
+  ></app-playlist-detail>
 
   <app-card
     *ngIf="selectedPlaylist && edited && !!edited.id"
@@ -31,13 +36,12 @@
         />
       </div>
       <div class="flex__column">
-        <label for="add_tracks">Tracks</label>
-        <input
-          type="number"
-          id="add_tracks"
-          class="input input--dark"
-          [(ngModel)]="edited.tracks"
-        />
+        <label>Tracks</label>
+        <div class="box box__column box--dark box--rounded">
+          <span *ngFor="let track of edited.tracks">
+            {{ track.name }}
+          </span>
+        </div>
       </div>
       <div class="flex__column">
         <label for="add_desc">Description</label>

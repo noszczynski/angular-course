@@ -36,7 +36,7 @@ import { routerModule } from './playlists.routing';
     //         name: 'new Name',
     //         color: '#4455fa',
     //         favourite: false,
-    //         tracks: 0
+    //         tracks: []
     //       }
     //
     //       data.push(newPlaylist)

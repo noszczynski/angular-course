@@ -21,7 +21,7 @@ export class PlaylistsComponent implements OnInit {
     editedInitial: Playlist = {
         name: null,
         description: null,
-        tracks: 0,
+        tracks: [],
         color: '#000000',
         favourite: false,
     };

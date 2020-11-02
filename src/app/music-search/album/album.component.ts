@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MusicSearchService } from '../music-search.service';
 import { ActivatedRoute } from '@angular/router';
+import { Track } from '../../interfaces';
 
 @Component({
     selector: 'app-album',
@@ -59,12 +60,7 @@ export class AlbumComponent implements OnInit {
 
     album = null;
     id;
-    tracks: {
-        track_number: number;
-        name: string;
-        artists: Array<any>;
-        preview_url: string;
-    }[];
+    tracks: Track[];
     selectedTrackUrl;
     headers = ['#', 'Name', 'Artist'];
 

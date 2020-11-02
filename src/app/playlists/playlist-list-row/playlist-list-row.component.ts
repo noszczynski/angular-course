@@ -16,7 +16,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
                     {{ playlist.name }}
                 </button>
             </span>
-            <span class="list__item"> {{ playlist.tracks }} </span>
+            <span class="list__item"> {{ playlist.tracks.length }} </span>
             <span class="list__item">
                 <span [ngClass]="{ list__item__favourite: playlist.favourite }">
                     {{ playlist.favourite ? 'Yes' : 'No' }}

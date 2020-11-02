@@ -3,158 +3,6 @@
 @import "./variables.scss";
 @import "./basics.scss";
 
-*, *::after, *::before {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  background: $garlic;
-  color: $blueberry;
-  height: 100%;
-  min-height: 100vh;
-  width: 100%;
-  font-family: Montserrat, Arial, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: $blueberry;
-  font-weight: 700;
-}
-
-h1, .h1 {font-size: 2rem}
-h2, .h2 {font-size: 1.75rem}
-h3, .h3 {font-size: 1.5rem}
-h4, .h4 {font-size: 1.25rem}
-h5, .h5 {font-size: 1rem}
-h6, .h6 {font-size: 0.75rem}
-
-p, span, strong {
-  color: $grape;
-
-  &.ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    display: inline-block;
-  }
-}
-
-button {
-  background-color: transparent;
-  border: none;
-}
-
-.btn {
-  border-radius: .25rem;
-  padding: 0.75rem 1.75rem;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform .15s ease-in-out;
-  margin: 0.5rem 0;
-
-  &--light {
-    background-color: $melon;
-    color: $blueberry;
-  }
-
-  &--dark {
-    background-color: $blueberry;
-    color: $garlic;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-
-}
-
-input, textarea {
-  background-color: transparent;
-  border-radius: .5rem;
-  font-size: 16px;
-
-  &.input {
-    padding: 0.75rem 1.75rem;
-    border: 0;
-    transition: border-bottom-color .15s ease-in-out;
-    background-color: lighten($garlic, 3);
-    margin: 0.5rem 0;
-
-    &:hover, &:focus {
-      outline: none;
-      border-bottom-color: $grape;
-    }
-
-    &__color {
-      padding: 0.5rem 1rem;
-      width: 100px;
-      height: 44px;
-    }
-
-    &--light {
-      border-bottom: 2px solid;
-      background-color: $melon;
-      color: $blueberry;
-      border-color: $melon;
-
-      &:hover, &:focus {
-        border-bottom-color: $grape;
-      }
-    }
-
-    &--dark {
-      border-bottom: 2px solid;
-      background-color: $blueberry;
-      color: $garlic;
-      border-color: $blueberry;
-
-      &:hover, &:focus {
-        border-bottom-color: $watermelon;
-      }
-    }
-  }
-}
-
-textarea {
-  min-height: 10rem;
-}
-
-.link {
-  text-decoration: none;
-  font-weight: 700;
-  display: inline-block;
-  margin: .5rem 0;
-  transition: color .15s ease-in-out;
-
-  &--dark {
-    color: $blueberry;
-
-    &:hover {
-      color: $grape;
-    }
-  }
-
-  &--light {
-    color: $melon;
-
-    &:hover {
-      color: $garlic;
-    }
-  }
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-}
-
 @mixin size($h: 100%, $w: 100%) {
   height: #{$h};
   width: #{$w};
@@ -247,6 +95,190 @@ img {
     padding-bottom: #{$top};
   }
 
+}
+
+@mixin dark() {
+  background-color: $blueberry;
+  color: $garlic;
+}
+
+@mixin light() {
+  background-color: $melon;
+  color: $blueberry;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  background: $garlic;
+  color: $blueberry;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  font-family: Montserrat, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $blueberry;
+  font-weight: 700;
+}
+
+h1, .h1 {font-size: 2rem}
+h2, .h2 {font-size: 1.75rem}
+h3, .h3 {font-size: 1.5rem}
+h4, .h4 {font-size: 1.25rem}
+h5, .h5 {font-size: 1rem}
+h6, .h6 {font-size: 0.75rem}
+
+p, span, strong {
+  color: $grape;
+
+  &.ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.box {
+  @include padding(1rem);
+
+  &__column {
+    @include flex(column, flex-start, flex-start);
+  }
+
+  &__row {
+    @include flex(row, flex-start, flex-start);
+  }
+
+  &--rounded {
+    border-radius: 0.5rem;
+  }
+
+  &--light {
+    @include light();
+  }
+
+  &--dark {
+    @include dark();
+  }
+}
+
+.btn {
+  border-radius: .25rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform .15s ease-in-out;
+  margin: 0.5rem 0;
+
+  &--light {
+    @include light();
+  }
+
+  &--dark {
+    @include dark();
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+}
+
+input, textarea {
+  background-color: transparent;
+  border-radius: .5rem;
+  font-size: 16px;
+
+  &.input {
+    padding: 0.75rem 1.75rem;
+    border: 0;
+    transition: border-bottom-color .15s ease-in-out;
+    background-color: lighten($garlic, 3);
+    margin: 0.5rem 0;
+
+    &:hover, &:focus {
+      outline: none;
+      border-bottom-color: $grape;
+    }
+
+    &__color {
+      padding: 0.5rem 1rem;
+      width: 100px;
+      height: 44px;
+    }
+
+    &--light {
+      @include light();
+
+      border-bottom: 2px solid;
+      border-color: $melon;
+
+      &:hover, &:focus {
+        border-bottom-color: $grape;
+      }
+    }
+
+    &--dark {
+      @include dark();
+
+      border-bottom: 2px solid;
+      border-color: $blueberry;
+
+      &:hover, &:focus {
+        border-bottom-color: $watermelon;
+      }
+    }
+  }
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  margin: .5rem 0;
+  transition: color .15s ease-in-out;
+
+  &--dark {
+    color: $blueberry;
+
+    &:hover {
+      color: $grape;
+    }
+  }
+
+  &--light {
+    color: $melon;
+
+    &:hover {
+      color: $garlic;
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .content {
