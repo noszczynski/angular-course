@@ -6,12 +6,14 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
     template: `
         <div class="card">
             <img class="card__image" *ngIf="image" [src]="image" alt="thumb" />
-            <app-card-content
-                [title]="title"
-                [description]="description"
-            ></app-card-content>
-            <div class="card__body card__content">
-                <ng-content></ng-content>
+            <div class="flex__column__between">
+                <app-card-content
+                    [title]="title"
+                    [description]="description"
+                ></app-card-content>
+                <div class="card__body card__content">
+                    <ng-content></ng-content>
+                </div>
             </div>
         </div>
     `,

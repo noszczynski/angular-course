@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
             [description]="description"
             [image]="image.url"
         >
-            <a routerLink="album/{{ albumId }}">link</a>
+            <a class="link link--dark" routerLink="album/{{ albumId }}">link</a>
         </app-card>
     `,
     styleUrls: ['./album-card.component.scss'],

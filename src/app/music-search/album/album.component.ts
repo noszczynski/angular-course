@@ -12,6 +12,13 @@ import { ActivatedRoute } from '@angular/router';
             <div class="album__playlist">
                 <h2 class="album__playlist__header">Tracks</h2>
                 <div class="album__playlist__wrapper" *ngIf="tracks">
+                    <div class="album__sample">
+                        <audio
+                            [src]="selectedTrackUrl"
+                            controls
+                            autoplay
+                        ></audio>
+                    </div>
                     <div class="album__playlist__row">
                         <div
                             class="album__song__header"
@@ -28,14 +35,10 @@ import { ActivatedRoute } from '@angular/router';
                             {{ track.track_number }}
                         </div>
                         <div class="album__song__field">
-                            {{ track.name }}
+                            <button (click)="selectTrack(track)">
+                                {{ track.name }}
+                            </button>
                         </div>
-                        <!--                        <div class="album__song__field">-->
-                        <!--                            {{ track.duration_ms }}-->
-                        <!--                        </div>-->
-                        <!--                        <div class="album__song__field">-->
-                        <!--                            {{ track.href }}-->
-                        <!--                        </div>-->
                         <div class="album__song__field">
                             {{ track.artists[0].name }}
                         </div>
@@ -56,11 +59,23 @@ export class AlbumComponent implements OnInit {
 
     album = null;
     id;
-    tracks: [];
+    tracks: {
+        track_number: number;
+        name: string;
+        artists: Array<any>;
+        preview_url: string;
+    }[];
+    selectedTrackUrl;
     headers = ['#', 'Name', 'Artist'];
 
     getAlbum = async (id: string): Promise<void> => {
         return await this.musicService.getAlbum(id);
+    };
+
+    selectTrack = ({ preview_url }): void => {
+        console.log(preview_url);
+
+        this.selectedTrackUrl = preview_url;
     };
 
     ngOnInit(): void {

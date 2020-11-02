@@ -5,11 +5,13 @@
   @include flex('row', 'center', 'space-between');
   @include paddingX(1rem);
 
+  z-index: 100;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: $garlic;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 0 2px 1px, rgba(0, 0, 0, 0.08) 0 2px 4px 0;
 
   &__box {
 

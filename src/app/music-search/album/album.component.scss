@@ -4,8 +4,12 @@
   @include grid(2, 'flex-start');
   @include margin(1rem);
 
+  &__sample {
+    @include marginY(0, 2rem);
 
-  border: 1px dashed black;
+     audio {
+       width: 100%;
+     } }
 
   &__playlist {
 
@@ -32,7 +36,18 @@
     }
 
     &__field {
+      @include marginY(0, 0.5rem);
 
+      font-size: 1rem;
+      font-weight: 300;
+      color: $blueberry;
+
+      button {
+        font-size: inherit;
+        cursor: pointer;
+        font-weight: 400;
+        color: inherit;
+      }
     }
   }
 
