@@ -27,7 +27,10 @@ import { Playlist } from '../../interfaces';
         </app-card>
         &nbsp;
         <app-card [title]="'tracks'">
-            <app-track-list [list]="activePlaylist.tracks"></app-track-list>
+            <app-track-list
+                [list]="activePlaylist.tracks"
+                [headers]="headers"
+            ></app-track-list>
         </app-card>
     `,
     styleUrls: ['./playlist-detail.component.scss'],
@@ -36,6 +39,8 @@ export class PlaylistDetailComponent implements OnInit {
     @Input() activePlaylist: Playlist | undefined;
     @Output() setEditedPlaylist: EventEmitter<any> = new EventEmitter();
     @Output() removePlaylist: EventEmitter<any> = new EventEmitter();
+
+    headers = ['#', 'Name', 'Artist', ''];
 
     handleSetEditedPlaylist = (id: number) => this.setEditedPlaylist.emit(id);
     handleRemovePlaylist = (id: number) => this.removePlaylist.emit(id);

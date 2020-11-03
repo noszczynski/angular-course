@@ -21,15 +21,10 @@ import { ID, Track } from '../../interfaces';
                         ></audio>
                     </div>
                     <app-playlist-selector></app-playlist-selector>
-                    <div class="album__playlist__row">
-                        <div
-                            class="album__song__header"
-                            *ngFor="let header of headers"
-                        >
-                            <h6 class="m-0 mb-1">{{ header }}</h6>
-                        </div>
-                    </div>
-                    <app-track-list [list]="tracks"></app-track-list>
+                    <app-track-list
+                        [list]="tracks"
+                        [headers]="headers"
+                    ></app-track-list>
                 </div>
             </div>
         </div>

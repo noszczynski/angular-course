@@ -1,0 +1,41 @@
+@import "./src/styles";
+
+.album {
+  @include grid(2, 'flex-start');
+  @include margin(1rem);
+
+  &__sample {
+    @include marginY(0, 2rem);
+
+    audio {
+      width: 100%;
+    }
+  }
+
+  &__playlist {
+
+    &__row {
+      display: grid;
+      grid-template-columns: 2rem 2fr 1fr 2rem;
+    }
+  }
+
+  &__song {
+    @include marginY(0, 1rem);
+
+    &__field {
+      @include marginY(0, 0.5rem);
+
+      font-size: 1rem;
+      font-weight: 300;
+      color: $blueberry;
+
+      button {
+        font-size: inherit;
+        cursor: pointer;
+        font-weight: 400;
+        color: inherit;
+      }
+    }
+  }
+}

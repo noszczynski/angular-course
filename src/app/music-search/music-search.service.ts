@@ -15,7 +15,7 @@ export class MusicSearchService {
     albumsUpdated: EventEmitter<any> = new EventEmitter();
 
     albums = [];
-    searchTerm = 'cyberpunk';
+    searchTerm;
 
     searchAlbums = async (term = this.searchTerm) => {
         if (term && term.length >= 3) {
@@ -39,15 +39,19 @@ export class MusicSearchService {
             return [];
         }
 
-        return this.albums;
+        return [];
     };
 
     setSearchTerm = async (term: string) => {
         this.searchTerm = term;
         const result = await this.searchAlbums(term);
-        await this.setAlbums(result);
 
-        return await result;
+        if (result && result.length > 0) {
+            await this.setAlbums(result);
+            return await result;
+        }
+
+        return this.albums;
     };
 
     setAlbums = (albums: any[] = []) => {

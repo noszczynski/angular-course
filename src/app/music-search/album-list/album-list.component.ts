@@ -12,6 +12,7 @@ import { MusicSearchService } from '../music-search.service';
                     type="text"
                     placeholder="Search sth"
                     [(ngModel)]="searchTerm"
+                    (keydown)="handleKeyDown($event)"
                 />
                 <button class="btn btn--light" (click)="onSearch()">
                     Search
@@ -32,6 +33,12 @@ export class AlbumListComponent implements OnInit {
 
     albums = [];
     searchTerm = '';
+
+    handleKeyDown = async (e) => {
+        if (e.key === 'Enter') {
+            await this.onSearch();
+        }
+    };
 
     onSearch = async () => {
         this.albums = await this.musicSearch.setSearchTerm(this.searchTerm);

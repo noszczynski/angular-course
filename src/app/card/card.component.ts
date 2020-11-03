@@ -4,7 +4,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
     selector: 'app-card',
     styleUrls: ['./card.component.scss'],
     template: `
-        <div class="card">
+        <div class="card pb-1">
             <img class="card__image" *ngIf="image" [src]="image" alt="thumb" />
             <div class="flex__column__between">
                 <a [href]="hyperLink" *ngIf="hyperLink; else elseBlock">
