@@ -1,0 +1,16 @@
+@import "./src/styles";
+
+.selector {
+  @include padding(1rem);
+
+  &__head {
+    &__header {
+
+    }
+  }
+
+  &__body {
+    @include paddingY(1rem);
+  }
+
+}

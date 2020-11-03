@@ -7,9 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
             [title]="album.name"
             [description]="description"
             [image]="image.url"
-        >
-            <a class="link link--dark" routerLink="album/{{ albumId }}">link</a>
-        </app-card>
+            [hyperLink]="albumLink"
+        ></app-card>
     `,
     styleUrls: ['./album-card.component.scss'],
 })
@@ -20,7 +19,7 @@ export class AlbumCardComponent implements OnInit {
     set setAlbum(album) {
         this.album = album;
         this.image = album.images[0];
-        this.albumId = album.id;
+        this.albumLink = `music/album/${album.id}`;
 
         const [artist] = album.artists;
         this.description = artist.name;
@@ -29,7 +28,7 @@ export class AlbumCardComponent implements OnInit {
     album;
     image;
     description;
-    albumId;
+    albumLink;
 
     ngOnInit(): void {}
 }

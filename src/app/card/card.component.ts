@@ -7,10 +7,18 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
         <div class="card">
             <img class="card__image" *ngIf="image" [src]="image" alt="thumb" />
             <div class="flex__column__between">
-                <app-card-content
-                    [title]="title"
-                    [description]="description"
-                ></app-card-content>
+                <a [href]="hyperLink" *ngIf="hyperLink; else elseBlock">
+                    <app-card-content
+                        [title]="title"
+                        [description]="description"
+                    ></app-card-content>
+                </a>
+                <ng-template #elseBlock>
+                    <app-card-content
+                        [title]="title"
+                        [description]="description"
+                    ></app-card-content>
+                </ng-template>
                 <div class="card__body card__content">
                     <ng-content></ng-content>
                 </div>
@@ -23,8 +31,7 @@ export class CardComponent implements OnInit {
     @Input() title?: string;
     @Input() description?: string;
     @Input() image?: string;
-
-    constructor() {}
+    @Input() hyperLink?: string;
 
     ngOnInit(): void {}
 }

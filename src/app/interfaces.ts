@@ -1,8 +1,8 @@
 interface ID {
-    id?: number;
+    id?: number | string;
 }
 
-interface Track {
+interface Track extends ID {
     track_number: number;
     name: string;
     artists: Array<any>;
@@ -17,4 +17,4 @@ interface Playlist extends ID {
     favourite: boolean;
 }
 
-export { Playlist, Track };
+export { Playlist, Track, ID };

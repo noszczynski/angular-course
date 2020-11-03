@@ -151,6 +151,11 @@ button {
   border: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .box {
   @include padding(1rem);
 
@@ -240,6 +245,13 @@ input, textarea {
 
       &:hover, &:focus {
         border-bottom-color: $watermelon;
+      }
+    }
+
+    &--select {
+
+      .option {
+
       }
     }
   }

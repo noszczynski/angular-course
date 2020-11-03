@@ -9,8 +9,8 @@ import { PlaylistFormNewComponent } from './form/playlist-form-new/playlist-form
 import { PlaylistListRowComponent } from './playlist-list-row/playlist-list-row.component';
 import { PlaylistDetailComponent } from './playlist-detail/playlist-detail.component';
 import { CardModule } from '../card/card.module';
-import { PlaylistsService } from './playlists.service';
 import { routerModule } from './playlists.routing';
+import { MusicSharedModule } from '../music-shared/music-shared.module';
 
 // import playlists from './playlists.data';
 
@@ -24,9 +24,15 @@ import { routerModule } from './playlists.routing';
         PlaylistDetailComponent,
     ],
     exports: [PlaylistsComponent],
-    imports: [CommonModule, FormsModule, CardModule, routerModule],
+    imports: [
+        CommonModule,
+        FormsModule,
+        CardModule,
+        MusicSharedModule,
+        routerModule,
+    ],
     providers: [
-        PlaylistsService,
+        // PlaylistsService,
         // { provide: 'playlists', useValue: playlists },
     ],
 

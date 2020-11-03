@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import api from '../services/api';
 import { clone } from '../utils';
 import tokenStorage from '../services/tokenStorage';
+import { ID } from '../interfaces';
 
 @Injectable({
     providedIn: 'root',
@@ -58,16 +59,12 @@ export class MusicSearchService {
         return this.albums;
     };
 
-    getAlbum = async (id: string) => {
+    getAlbum = async (id: ID) => {
         const query = `/albums/${id}`;
 
-        const result = await api
+        return await api
             .get(query)
             .then((response) => response.data)
             .catch(() => tokenStorage.clear());
-
-        await console.log(result);
-
-        return result;
     };
 }

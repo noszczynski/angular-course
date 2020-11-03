@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MusicSearchService } from '../music-search.service';
 import { ActivatedRoute } from '@angular/router';
-import { Track } from '../../interfaces';
+import { ID, Track } from '../../interfaces';
 
 @Component({
     selector: 'app-album',
@@ -20,6 +20,7 @@ import { Track } from '../../interfaces';
                             autoplay
                         ></audio>
                     </div>
+                    <app-playlist-selector></app-playlist-selector>
                     <div class="album__playlist__row">
                         <div
                             class="album__song__header"
@@ -28,27 +29,13 @@ import { Track } from '../../interfaces';
                             <h6 class="m-0 mb-1">{{ header }}</h6>
                         </div>
                     </div>
-                    <div
-                        class="album__playlist__row"
-                        *ngFor="let track of tracks"
-                    >
-                        <div class="album__song__field">
-                            {{ track.track_number }}
-                        </div>
-                        <div class="album__song__field">
-                            <button (click)="selectTrack(track)">
-                                {{ track.name }}
-                            </button>
-                        </div>
-                        <div class="album__song__field">
-                            {{ track.artists[0].name }}
-                        </div>
-                    </div>
+                    <app-track-list [list]="tracks"></app-track-list>
                 </div>
             </div>
         </div>
     `,
     styleUrls: ['./album.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class AlbumComponent implements OnInit {
     constructor(
@@ -62,16 +49,10 @@ export class AlbumComponent implements OnInit {
     id;
     tracks: Track[];
     selectedTrackUrl;
-    headers = ['#', 'Name', 'Artist'];
+    headers = ['#', 'Name', 'Artist', ''];
 
-    getAlbum = async (id: string): Promise<void> => {
+    getAlbum = async (id: ID): Promise<void> => {
         return await this.musicService.getAlbum(id);
-    };
-
-    selectTrack = ({ preview_url }): void => {
-        console.log(preview_url);
-
-        this.selectedTrackUrl = preview_url;
     };
 
     ngOnInit(): void {

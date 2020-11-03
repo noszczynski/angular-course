@@ -9,6 +9,7 @@ import { CardModule } from '../card/card.module';
 import { MusicSearchService } from './music-search.service';
 import { routerModule } from './music-search.routing';
 import { AlbumComponent } from './album/album.component';
+import { MusicSharedModule } from '../music-shared/music-shared.module';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,13 @@ import { AlbumComponent } from './album/album.component';
         AlbumCardComponent,
         AlbumComponent,
     ],
-    imports: [CommonModule, CardModule, FormsModule, routerModule],
+    imports: [
+        CommonModule,
+        CardModule,
+        FormsModule,
+        MusicSharedModule,
+        routerModule,
+    ],
     exports: [AlbumListComponent, MusicSearchComponent],
     providers: [MusicSearchService],
 })

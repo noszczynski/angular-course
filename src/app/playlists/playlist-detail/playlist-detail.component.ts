@@ -25,6 +25,10 @@ import { Playlist } from '../../interfaces';
                 </button>
             </div>
         </app-card>
+        &nbsp;
+        <app-card [title]="'tracks'">
+            <app-track-list [list]="activePlaylist.tracks"></app-track-list>
+        </app-card>
     `,
     styleUrls: ['./playlist-detail.component.scss'],
 })
