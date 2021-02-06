@@ -15,7 +15,7 @@ export class AuthService {
         const scopes = 'user-read-private user-read-email';
 
         const replaceUrl = `
-          https://accounts.spotify.com/authorize?client_id=${id}&response_type=token&redirect_uri=${host}&scope=${scopes}
+          https://accounts.spotify.com/authorize?client_id=${id}&response_type=token&redirect_uri=${host}/&scope=${scopes}
         `;
 
         window.location.replace(replaceUrl);
