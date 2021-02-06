@@ -11,7 +11,7 @@ export class AuthService {
         tokenStorage.clear();
 
         const id = '8ce869f67e7241b9a6f4e981f6c56793';
-        const host = 'http://localhost:4200/';
+        const host = window.location.origin;
         const scopes = 'user-read-private user-read-email';
 
         const replaceUrl = `
